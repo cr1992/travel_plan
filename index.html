@@ -282,18 +282,6 @@
     overflow-wrap: anywhere;
   }
 
-  .pass-detail {
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px 22px;
-    font-family: var(--mono);
-    font-size: 10.5px;
-    color: var(--ink-faint);
-    letter-spacing: .08em;
-  }
-  .pass-detail b { color: var(--ink-soft); font-weight: 700; }
-
   /* perforated kraft stub */
   .pass-stub {
     border-left: 2px dashed #C9BFA8;
@@ -420,8 +408,6 @@
   </main>
 
   <footer>
-    boarding passes auto-generated from repository tree<br>
-    push 新的 html 页面后 · 本页自动收录 · 无需修改任何代码<br>
     <a id="repoLink" href="#" target="_blank" rel="noopener">view repository →</a>
   </footer>
 
@@ -505,9 +491,8 @@
           '<a class="pass grain" href="' + encPath(f.path) + '" data-key="' + esc((f.path + " " + titleOf(f.path)).toLowerCase()) + '" style="animation-delay:' + (idx * 90) + 'ms">' +
             '<span class="pass-edge">Boarding Pass</span>' +
             '<span class="pass-main">' +
-              '<span class="pass-route"><span class="pass-no">' + no + "</span><span>HOME ✈ DEST</span></span>" +
+              '<span class="pass-route"><span class="pass-no">' + no + "</span></span>" +
               '<span class="pass-title">' + esc(titleOf(f.path)) + "</span>" +
-              '<span class="pass-detail"><span>FILE <b>' + esc(f.path) + "</b></span></span>" +
             "</span>" +
             '<span class="pass-stub">' +
               '<span class="barcode"></span>' +
