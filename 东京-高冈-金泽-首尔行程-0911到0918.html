@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>东京 · 高冈 · 金泽 · 首尔 ｜ 9/11–9/18</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  /* ============ HOUSE STYLE — Claude warm-cream + clay-coral (do not drift) ============ */
+  :root{
+    --bg:#FDFDFC; --card:#FFFFFF; --kraft:#ECE5D5;
+    --clay:#D97757; --clay-deep:#BD5A39;
+    --ink:#1F1E1D; --ink-2:#3B3A36; --ink-soft:#615C53; --ink-faint:#928C81;
+    --line:rgba(31,30,29,.12); --line-2:rgba(31,30,29,.2); --dark:#26241F;
+    --shadow:0 12px 32px -16px rgba(61,55,45,.45);
+    --serif:"Noto Serif SC",serif; --sans:"Noto Sans SC",sans-serif; --disp:"Fraunces",Georgia,serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bg);font-size:16.5px;line-height:1.72;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");}
+  .wrap{position:relative;z-index:1;max-width:520px;margin:0 auto;}
+  .hero{position:relative;padding:58px 26px 34px;overflow:hidden;background:radial-gradient(120% 80% at 88% 4%, rgba(217,119,87,.16) 0%, rgba(217,119,87,0) 55%),var(--bg);}
+  .kicker{font-family:var(--disp);font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--clay-deep);font-weight:600;margin-bottom:16px;}
+  .hero h1{font-family:var(--serif);font-weight:700;font-size:2.7rem;line-height:1.16;color:var(--ink);}
+  .hero h1 span{color:var(--clay);}
+  .rule{width:48px;height:4px;background:var(--clay);border-radius:4px;margin:18px 0 16px;}
+  .tag-line{font-size:.98rem;color:var(--ink-2);font-weight:500;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+  .chip{display:inline-flex;align-items:center;gap:5px;background:var(--card);border:1px solid var(--line-2);border-radius:30px;padding:6px 13px;font-size:.84rem;color:var(--ink-2);font-weight:500;box-shadow:0 2px 8px -6px rgba(61,55,45,.4);}
+  .chip b{color:var(--ink);font-family:var(--disp);font-weight:600;}
+  .chip.lead{background:var(--clay);border-color:var(--clay);color:#fff;}
+  .chip.lead b{color:#fff;}
+  .info{margin:18px 18px 0;background:var(--card);border-radius:18px;box-shadow:var(--shadow);border:1px solid var(--line);overflow:hidden;}
+  .info .row{display:flex;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line);font-size:.92rem;color:var(--ink-2);}
+  .info .row:last-child{border-bottom:0;}
+  .info .ic{flex:0 0 24px;font-size:1.1rem;line-height:1.45;}
+  .info .row b{color:var(--ink);font-weight:700;}
+  .info .tip{background:rgba(217,119,87,.09);}
+  .info .tip b{color:var(--clay-deep);}
+  .daynav{position:sticky;top:0;z-index:20;display:flex;gap:8px;justify-content:center;padding:12px 14px;margin-top:24px;background:rgba(253,253,252,.9);backdrop-filter:blur(10px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .daynav a{flex:1;text-align:center;text-decoration:none;font-weight:500;font-size:.86rem;color:var(--ink-2);padding:9px 6px;border-radius:11px;border:1px solid var(--line-2);transition:all .25s ease;}
+  .daynav a .d{font-family:var(--disp);font-weight:600;font-size:1rem;margin-right:3px;color:var(--clay-deep);}
+  .daynav a.on,.daynav a:active{background:var(--clay);color:#fff;border-color:var(--clay);}
+  .daynav a.on .d,.daynav a:active .d{color:#fff;}
+  .day{padding:34px 22px 8px;scroll-margin-top:64px;}
+  .day-head{margin-bottom:22px;}
+  .day-num{font-family:var(--disp);font-weight:600;font-size:3.4rem;line-height:.9;color:var(--clay);display:flex;align-items:baseline;gap:10px;}
+  .day-num span{font-family:var(--disp);font-size:1rem;color:var(--ink-faint);font-weight:500;letter-spacing:.04em;}
+  .day-title{font-family:var(--serif);font-weight:700;font-size:1.34rem;margin-top:10px;color:var(--ink);}
+  .day-note{font-size:.92rem;color:var(--ink-soft);margin-top:7px;}
+  .entry{display:grid;grid-template-columns:50px 20px 1fr;gap:10px;position:relative;padding-bottom:22px;}
+  .entry .time{font-family:var(--disp);font-weight:600;font-size:.94rem;color:var(--clay-deep);text-align:right;padding-top:1px;white-space:nowrap;}
+  .entry .mk{position:relative;}
+  .entry .mk .dot{width:12px;height:12px;border-radius:50%;background:var(--clay);border:2.5px solid var(--bg);box-shadow:0 0 0 1px var(--clay);margin:6px auto 0;position:relative;z-index:2;}
+  .entry .mk::before{content:"";position:absolute;left:50%;top:6px;bottom:-22px;width:2px;transform:translateX(-50%);background:var(--line-2);}
+  .entry:last-child .mk::before{display:none;}
+  .entry .ttl{font-family:var(--serif);font-weight:500;font-size:1.1rem;color:var(--ink);line-height:1.45;}
+  .entry .desc{font-size:.9rem;color:var(--ink-soft);margin-top:3px;}
+  .entry .desc b{color:var(--ink-2);font-weight:700;}
+  .tag{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 10px;border-radius:20px;margin-bottom:6px;letter-spacing:.02em;}
+  .t-coffee{background:#EBDDC6;color:#8A5A1C;} .t-food{background:#F4DBD0;color:#B14B2C;}
+  .t-see{background:#DCE6D6;color:#4C6A42;} .t-shop{background:#E6DFEC;color:#67478F;}
+  .t-zoo{background:#E2E8D1;color:#566F24;} .t-air{background:#DCE6EE;color:#33597F;}
+  .t-bag{background:#E9E2D5;color:#6A6056;}
+  .nav-btn{display:inline-flex;align-items:center;gap:5px;margin-top:10px;text-decoration:none;font-weight:500;font-size:.82rem;color:var(--clay-deep);background:var(--card);border:1px solid var(--line-2);border-radius:30px;padding:7px 14px;transition:all .2s ease;}
+  .nav-btn:active{background:var(--clay);color:#fff;border-color:var(--clay);}
+  .sub{margin-top:10px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:12px 15px;}
+  .sub li{list-style:none;font-size:.88rem;color:var(--ink-soft);padding:6px 0 6px 18px;position:relative;border-bottom:1px dashed var(--line);}
+  .sub li:last-child{border-bottom:0;}
+  .sub li::before{content:"";position:absolute;left:2px;top:14px;width:6px;height:6px;border-radius:50%;background:var(--clay);}
+  .sub li b{color:var(--ink);font-weight:700;}
+  .opt{margin:2px 0 22px 80px;background:var(--kraft);border:1.5px dashed var(--clay);border-radius:14px;padding:14px 16px;}
+  .opt .lbl{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:700;letter-spacing:.06em;color:var(--clay-deep);text-transform:uppercase;margin-bottom:6px;}
+  .opt .ot{font-family:var(--serif);font-weight:500;font-size:1rem;color:var(--ink);}
+  .opt .ot b{color:var(--clay-deep);}
+  .opt .od{font-size:.86rem;color:var(--ink-soft);margin-top:4px;}
+  .check{margin:18px 18px 0;background:var(--dark);color:#EDE8DD;border-radius:18px;padding:26px 22px;}
+  .check h3{font-family:var(--serif);font-weight:700;font-size:1.24rem;color:#FFFBF2;margin-bottom:4px;}
+  .check .cs{font-size:.84rem;color:#B7AE9D;margin-bottom:16px;}
+  .check ul{list-style:none;}
+  .check li{display:flex;gap:12px;font-size:.92rem;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .check li:last-child{border-bottom:0;}
+  .check li .n{font-family:var(--disp);font-weight:600;color:var(--clay);flex:0 0 18px;}
+  .check li b{color:#fff;font-weight:700;}
+  footer{padding:26px 24px 46px;text-align:center;font-size:.78rem;color:var(--ink-faint);line-height:1.6;}
+  footer .h{font-family:var(--disp);font-style:italic;color:var(--clay-deep);font-size:.95rem;}
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+  .rv.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<script>
+/* =====================================================================
+   EDIT ONLY THIS BLOCK to make a new itinerary. The page renders from it.
+   - chips: top pills; set lead:true on the most important one (gets coral)
+   - info:  core-info card rows; set tip:true on the one highlight row
+   - days[].items[].tag class: coffee|food|see|shop|zoo|air|bag
+   - map: a full "https://maps.google.com/?cid=..." link (from places_search)
+          OR just a place name string (auto-built into a maps search link)
+   - sub:  optional bullet list under an item (e.g. airport to-dos)
+   - options: dashed "free-to-arrange" cards for that day
+   ===================================================================== */
+const TRIP = {
+  kicker: "东京 · 高冈 · 金泽 · 首尔 · 8 天 7 晚",
+  h1: ["哆啦A梦的", "故乡", "慢慢逛三天"],
+  tagline: "东京只当落脚 · 高冈三晚泡透 · 金泽一日 · 首尔两晚扫货",
+  chips: [
+    { text: "<b>9/11 – 9/18</b>" },
+    { text: "🚄 高冈 3 晚 · 首尔 2 晚" },
+    { text: "🔵 核心 · 哆啦A梦全天", lead: true }
+  ],
+  info: [
+    { ic: "✈️", html: "去程 <b>9/11</b> 杭州 08:30 → 香港转 → 成田 <b>20:05</b>（港航）　回程 <b>9/18</b> 仁川 15:30 → 青岛转 → 杭州 <b>20:25</b>（山航）" },
+    { ic: "🔑", html: "全程支点：<b>KE2190 小松 10:15 → 仁川 12:10</b>（9/16，<b>每天只有这一班</b>，误了整条线就散）" },
+    { ic: "🏨", html: "上野 1 晚 · <b>高冈站前 3 晚</b> · 金泽站前 1 晚 · 明洞 2 晚" },
+    { ic: "💳", html: "城端线·冰见线·万葉線 <b>可刷 Suica／ICOCA</b>（今年 3 月刚开通）。人均备 <b>2 万日元现金</b>，重点是小额零钞" },
+    { ic: "⚠️", tip: true, html: "<b>白川乡这次不去</b> —— 雪景是它的看点，留给冬天。省下的一天给了金泽和高冈" }
+  ],
+  days: [
+    { n: 1, date: "9/11 · 周五", title: "只是落脚 · 上野",
+      note: "全天都在路上，落地成田已 20:05。香港中转 3 小时 10 分，行李直挂成田，中转不出关、持大陆护照无需过境签。",
+      items: [
+        { time:"08:30", tag:"✈️ 机场", cls:"air", title:"杭州萧山 T4 → 香港", desc:"港航 HX129，机型 32S，<b>11:10 到香港 T1</b>，飞行 2 小时 40 分。", map:"https://www.google.com/maps/search/?api=1&query=杭州萧山国际机场T4" },
+        { time:"11:10", tag:"🧳 中转", cls:"bag", title:"香港中转（3 小时 10 分）", desc:"行李已直挂成田，中转不用提取。跟着 Transfer 指示走，不入境香港。",
+          sub:["票面写 T2 出发，但港航实际都在 T1 —— <b>以现场屏幕为准</b>","3 小时 10 分对香港机场很充裕，可以慢慢吃个饭","同一张票、同一家航司，第一段晚点导致误接由港航负责改签"],
+          map:"https://www.google.com/maps/search/?api=1&query=香港国际机场" },
+        { time:"14:20", tag:"✈️ 机场", cls:"air", title:"香港 → 东京成田 T1", desc:"港航 HX630，机型 32G，<b>20:05 落地</b>，飞行 4 小时 45 分。", map:"https://www.google.com/maps/search/?api=1&query=成田国際空港第1ターミナル" },
+        { time:"21:00", tag:"🚄 交通", cls:"air", title:"成田 → 京成上野（Skyliner）", desc:"入境加取行李约 45 分钟。成田空港站可坐 <b>21:00 / 21:20 / 21:40</b> 三班，约 47 分钟到京成上野。<b>末班 23:00 → 上野 23:48</b>，余量近 3 小时，航班晚点两小时内都不用慌。",
+          sub:["晚饭在机场或便利店解决 —— 阿美横丁大多 22 点前打烊","<b>务必提前确认青旅前台几点关门</b>，到店已近 22:30","Skyliner 车站现买即可，不用提前订"],
+          map:"https://www.google.com/maps/search/?api=1&query=成田空港駅" },
+        { time:"22:20", tag:"🧳 住宿", cls:"bag", title:"入住 Tokyo Ueno Youth Hostel", desc:"紧邻上野站，有厨房和洗衣机，入住前后都能寄存行李。临街的房间会吵，带副耳塞。",
+          sub:["订房时指定<b>女性专用多人间</b>","⚠️ 上野另两家 Oriental 1／2 是<b>男性专用</b>，别订错","今晚订掉次日 09:32 的新干线指定席"],
+          map:"https://www.google.com/maps/search/?api=1&query=Tokyo Ueno Youth Hostel&query_place_id=ChIJa0Uw0yGMGGARrJPvvYNJY8E" }
+      ],
+      options: [
+        { title:"如果 HX630 大幅延误", desc:"落地晚于 22:10 就赶不上 Skyliner 末班（成田站 23:00 发）。备选：京成本线普通车更晚仍有；或直接住成田机场旁的酒店，次日一早坐 N'EX 到东京站，一样赶得上 09:32。", map:"https://www.google.com/maps/search/?api=1&query=成田空港第1ターミナル ホテル" }
+      ]
+    },
+    { n: 2, date: "9/12 · 周六", title: "东京到高冈 · 市区",
+      note: "上午就走，中午到，下午把高冈市区经典的一圈走完。行李先寄在新高冈站，别拖着箱子上瑞龙寺的山门。",
+      items: [
+        { time:"09:32", tag:"🚄 交通", cls:"air", title:"白鹰号 东京 → 新高冈", desc:"约 2 小时 41 分，<b>12:13 到</b>。かがやき 大部分车次<b>不停新高冈</b>，别买错。⚠️ 我核对的是平日表，9/12 是周六且 7–9 月有临时加开，<b>购票时再确认一次</b>。", map:"https://www.google.com/maps/search/?api=1&query=東京駅&query_place_id=ChIJC3Cf2PuLGGAROO00ukl8JwA" },
+        { time:"12:20", tag:"🧳 行李", cls:"bag", title:"新高冈站寄存箱子", desc:"站内有投币柜。瑞龙寺就在这一站，逛完回来取，再坐城端线 3 分钟去高冈站。", map:"https://www.google.com/maps/search/?api=1&query=新高岡駅&query_place_id=ChIJVTIUNuOC918R3xYj2Cllhak" },
+        { time:"12:40", tag:"🏛 景点", cls:"see", title:"瑞龙寺", desc:"国宝级禅寺，每天 9:00–16:30。殿内可加 500 日元喝抹茶配和果子，坐一会儿再走。", map:"https://www.google.com/maps/search/?api=1&query=瑞龍寺&query_place_id=ChIJJ5Pek-mC918Rtp9Gnp1DLw8" },
+        { time:"14:20", tag:"🧳 住宿", cls:"bag", title:"入住 Travelers' house ROOTs", desc:"高冈唯一一家评价很高的正经青旅。多人间，厨房洗衣齐全，老板 Isamu 英语好、很会给本地建议。走到高冈站很近。",
+          sub:["<b>check-in 时间要提前问</b>，青旅常常 15:00 或 16:00 才能进","行李是大箱子的话，考虑直接订独立房，早晚进出不吵人","住 3 晚，9/15 早上去金泽，退房时间不紧张"],
+          map:"https://www.google.com/maps/search/?api=1&query=Travelers' house ROOTs Takaoka&query_place_id=ChIJSfj4rfOD918Rx6MeZmRawjE" },
+        { time:"15:20", tag:"🏛 景点", cls:"see", title:"高冈大佛", desc:"9:00–17:00，日本三大佛之一，高冈站步行约 10 分。", map:"https://www.google.com/maps/search/?api=1&query=高岡大仏&query_place_id=ChIJ_dcc5NCD918RL3-PTE1M4No" },
+        { time:"16:10", tag:"🏛 景点", cls:"see", title:"山町筋", desc:"土藏造町屋老街，明治大正年间的商家街，走一段就到。", map:"https://www.google.com/maps/search/?api=1&query=山町筋&query_place_id=ChIJ8_PaR7qC918R4UM1XFQPJBA" },
+        { time:"17:00", tag:"🏛 景点", cls:"see", title:"金屋町", desc:"千本格子的铜器匠人街，高冈四百年铸物工艺的发源地。<b>傍晚斜光最好看</b>，也是全城最出片的一段。", map:"https://www.google.com/maps/search/?api=1&query=金屋町 高岡&query_place_id=ChIJl5w5ca-C918RiEaSd6UnmY8" },
+        { time:"18:30", tag:"🍜 美食", cls:"food", title:"高冈站前晚饭", desc:"富山湾白虾刺身、鳟鱼寿司、富山黑拉面。高冈可乐饼是本地名物，便利店都有。", map:"https://www.google.com/maps/search/?api=1&query=高岡駅&query_place_id=ChIJwWIICseC918RDLusw6tDfVk" }
+      ],
+      options: [
+        { title:"住宿备选：<b>SEKAI HOTEL Takaoka</b>", desc:"胶囊式概念旅店，主题是富山的「浅蓝」。前台发一张熟客卡，拿去周边小店有互动，很本地化。", map:"https://www.google.com/maps/search/?api=1&query=SEKAI HOTEL Takaoka&query_place_id=ChIJCdFHqZyD918R8iLGLt26ihw" },
+        { title:"想要能锁门的独立房：<b>Smile Hotel 高冈站前</b>", desc:"就在站边。高冈这种小城，商务酒店单间常和青旅床位差不多价。另有 Hotel Seven Seven 可比。", map:"https://www.google.com/maps/search/?api=1&query=Smile Hotel Takaoka Ekimae&query_place_id=ChIJ7ZxQK8GC918RAA3mLZvyka0" }
+      ]
+    },
+    { n: 3, date: "9/13 · 周日", title: "藤子F的故乡 · 哆啦A梦",
+      note: "周日美术馆开门（周一闭馆，所以只能今天），哆啦A梦电车也正常跑（只有周三检修停）。今天唯一要掐点的就是电车 —— 间隔 1 小时 45 分。",
+      items: [
+        { time:"08:40", tag:"🏛 景点", cls:"see", title:"哆啦A梦散步道", desc:"高冈站瑞龙寺口出来的广场，12 座角色铜像一字排开，全部是高冈铜器做的。出门先合影。", map:"https://www.google.com/maps/search/?api=1&query=ドラえもんの散歩道&query_place_id=ChIJOz23hseC918RbzAWFTuKQK8" },
+        { time:"09:10", tag:"✉️ 明信片", cls:"bag", title:"高冈站 · 哆啦A梦邮筒", desc:"同样是高冈铜器做的，从这里投递会盖<b>哆啦A梦纪念邮戳</b>。日本寄中国的航空明信片全球统一 <b>100 日元</b>。",
+          sub:["明信片和邮票车站周边、便利店、邮局都能买","<b>先写好再投</b> —— 戳是投递时压上去的","一次多写几张，这是这趟最值得寄回去的东西"],
+          map:"https://www.google.com/maps/search/?api=1&query=高岡駅&query_place_id=ChIJwWIICseC918RDLusw6tDfVk" },
+        { time:"09:30", tag:"🚋 交通", cls:"air", title:"哆啦A梦电车 高冈站发", desc:"<b>10:19 到越ノ潟</b>，单程 49 分钟。全天从高冈站只发七班：<b>7:45 / 9:30 / 11:15 / 13:00 / 14:45 / 16:30 / 18:15</b> —— 不是每班电车都是哆啦A梦车。",
+          sub:["万葉線可刷 Suica／ICOCA","<b>周三检修停运</b>，9/13 是周日没问题","官网「とやまロケーションシステム」可看实时车辆位置"],
+          map:"https://www.google.com/maps/search/?api=1&query=高岡駅&query_place_id=ChIJwWIICseC918RDLusw6tDfVk" },
+        { time:"10:22", tag:"🚋 交通", cls:"air", title:"同一辆车折返 → 高冈站 11:09", desc:"越ノ潟 10:19 到、10:22 就折返，<b>不用下车换乘</b>。去程回程都坐在哆啦A梦车厢里，整趟 1 小时 39 分。", map:"https://www.google.com/maps/search/?api=1&query=越ノ潟駅" },
+        { time:"11:30", tag:"🍜 美食", cls:"food", title:"午饭", desc:"想吃海鲜可以在中途的中新湊下车，新湊きっときと市場 就在附近，晚一班车回来。不想折腾就回高冈站前吃。", map:"https://www.google.com/maps/search/?api=1&query=新湊きっときと市場" },
+        { time:"13:00", tag:"🏛 景点", cls:"see", title:"藤子·F·不二雄故乡美术馆", desc:"高冈市美术馆 2F，9:30–17:00，<b>周一闭馆 —— 只能今天去</b>。约 45 分钟，<b>馆内禁止拍摄</b>。原稿、画具、那顶帽子都在。", map:"https://www.google.com/maps/search/?api=1&query=藤子・F・不二雄ふるさとギャラリー&query_place_id=ChIJq6pqv0ud918R6Nx7mq0q_5E" },
+        { time:"14:30", tag:"🏛 景点", cls:"see", title:"高冈おとぎの森公園", desc:"大雄他们那块空地的场景 1:1 还原，三根水泥管都在。全天开放、免费。离高冈站约 3 公里靠巴士，<b>周日班次少，查不到就直接打车</b>。", map:"https://www.google.com/maps/search/?api=1&query=高岡おとぎの森公園&query_place_id=ChIJe6pR9_iC918RwsihH-ra5fs" },
+        { time:"16:30", tag:"🏛 景点", cls:"see", title:"高冈古城公园", desc:"24 小时开放，园内有一座免费的小动物园。散步收尾，走回站前吃饭。", map:"https://www.google.com/maps/search/?api=1&query=高岡古城公園&query_place_id=ChIJd33-4bSC918RKzrY0Kz0Er0" }
+      ],
+      options: [
+        { title:"起晚了的备用班次", desc:"哆啦A梦电车下一班是 <b>11:15 发 → 12:04 到越ノ潟 → 12:07 折返 → 12:54 回高冈</b>。那就把美术馆挪到 14:00，其余顺延，一天照样装得下。", map:"https://www.google.com/maps/search/?api=1&query=高岡駅&query_place_id=ChIJwWIICseC918RDLusw6tDfVk" },
+        { title:"没逛够的留到明天", desc:"散步道、邮筒、电车、おとぎの森公園 周一全都照常开（只有美术馆闭馆），明天上午还有半天可以补。", map:"https://www.google.com/maps/search/?api=1&query=高岡おとぎの森公園&query_place_id=ChIJe6pR9_iC918RwsihH-ra5fs" }
+      ]
+    },
+    { n: 4, date: "9/14 · 周一", title: "高冈半天 · 雨晴海岸",
+      note: "周一美术馆闭馆，但哆啦A梦的户外点位和电车都照常。上午留给高冈慢慢逛，下午去海边 —— 9 月下午立山方向正好是顺光，是全年除冬天外最好的时段。",
+      items: [
+        { time:"09:30", tag:"🏛 景点", cls:"see", title:"能作 · 铸物工厂", desc:"10:00–18:00。工厂参观免费，锡器体验要<b>提前预约</b>（官网或邮件，顺便确认周一开不开）。哆啦A梦邮筒和散步道那些铜像，用的就是这门四百年的高冈手艺。", map:"https://www.google.com/maps/search/?api=1&query=能作 高岡&query_place_id=ChIJj75VT-eD918RRHyPQBp-I-4" },
+        { time:"11:30", tag:"🛍 购物", cls:"shop", title:"站前买周边和手信", desc:"高冈站内的商店有哆啦A梦限定商品；万葉線也卖纪念乘车券和周边（<b>周边只收现金</b>）。铜器手信在金屋町的工房店买更好。", map:"https://www.google.com/maps/search/?api=1&query=高岡駅&query_place_id=ChIJwWIICseC918RDLusw6tDfVk" },
+        { time:"12:15", tag:"🍜 美食", cls:"food", title:"高冈站前午饭", desc:"吃饱再出发，雨晴那边只有道の駅的轻食。", map:"https://www.google.com/maps/search/?api=1&query=高岡駅&query_place_id=ChIJwWIICseC918RDLusw6tDfVk" },
+        { time:"13:47", tag:"🚋 交通", cls:"air", title:"JR 冰见线 高冈 → 雨晴", desc:"<b>14:07 到</b>，约 20 分钟。这条线本身就是景，后半段贴着海开。高冈发车：…12:10 / <b>13:47</b> / 15:23 / 16:22 / 17:25…", map:"https://www.google.com/maps/search/?api=1&query=高岡駅&query_place_id=ChIJwWIICseC918RDLusw6tDfVk" },
+        { time:"14:10", tag:"🏛 景点", cls:"see", title:"道の駅雨晴 · 雨晴海岸", desc:"9:00–19:00。二楼露台喝杯咖啡看海，等那班列车贴着海岸驶过。义经岩和女岩就在下面。",
+          sub:["9 月<b>看到立山连峰浮在海上的概率不高</b>，那要冬天的晴日","但<b>下午立山方向是顺光</b>，海和列车的片子这个时段最好拍","回程从雨晴发车约 16:17 / 17:21 / 18:10（由氷見発 16:08 / 17:12 / 18:01 推算，以站内牌为准）"],
+          map:"https://www.google.com/maps/search/?api=1&query=道の駅雨晴&query_place_id=ChIJ7fBja4J2918ReHCxiqU3KGs" },
+        { time:"16:40", tag:"🧳 行李", cls:"bag", title:"回高冈 · 收行李", desc:"明早要去金泽，今晚把箱子收一下。晚饭可以再吃一次白虾或黑拉面 —— 这是在高冈的最后一晚。", map:"https://www.google.com/maps/search/?api=1&query=高岡駅&query_place_id=ChIJwWIICseC918RDLusw6tDfVk" }
+      ],
+      options: [
+        { title:"想把<b>藤子二人组</b>凑齐：加冰见", desc:"冰见是藤子不二雄Ⓐ（《忍者哈特利》作者）的老家。改成上午就走：高冈 <b>9:43</b> → 冰见 10:11，逛潮风画廊（10:00–17:00，200 日元）＋番屋街海鲜＋哈特利铜像街，<b>14:23</b> 冰见发车，<b>雨晴下车</b>看海到 16:17 再回高冈。一天串起两位藤子老师。", map:"https://www.google.com/maps/search/?api=1&query=氷見市潮風ギャラリー&query_place_id=ChIJ43jPkjRy918Rk09kgArB0MA" },
+        { title:"下雨的替代：<b>富山半日</b>", desc:"雨晴下雨就没意思了。改去富山：玻璃美术馆（隈研吾设计，周三闭、周一开）＋ 富岩运河环水公园星巴克。高冈坐车约 20 分。", map:"https://www.google.com/maps/search/?api=1&query=富山市ガラス美術館&query_place_id=ChIJSU90xaaC918RX-cV13mPXwc" }
+      ]
+    },
+    { n: 5, date: "9/15 · 周二", title: "加贺百万石 · 金泽",
+      note: "高冈到金泽新干线只要 13 分钟，等于换了个城市继续玩，而且顺手把明早去机场的路缩成一段直达。行李一到金泽就寄存或先送酒店。",
+      items: [
+        { time:"09:00", tag:"🚄 交通", cls:"air", title:"新高冈 → 金泽（13 分钟）", desc:"北陆新干线つるぎ／はくたか，全程 <b>13 分钟</b>，比在高冈市内坐公交还快。到站先把行李寄存或送酒店。", map:"https://www.google.com/maps/search/?api=1&query=金沢駅&query_place_id=ChIJBYa7A0Iz-F8R6qe7HgH2XV0" },
+        { time:"09:40", tag:"🍜 美食", cls:"food", title:"近江町市场", desc:"9:00–17:00。金泽的厨房，海鲜丼、生蚝、螃蟹。中午人最多，早点去坐得下。", map:"https://www.google.com/maps/search/?api=1&query=近江町市場&query_place_id=ChIJ0xPT93Az-F8RpTSlbHwo9L8" },
+        { time:"11:00", tag:"🏛 景点", cls:"see", title:"金泽城公园", desc:"7:00–18:00，园区免费。白墙黑瓦的城郭很开阔，和兼六园只隔一座桥，两个连着逛。", map:"https://www.google.com/maps/search/?api=1&query=金沢城公園&query_place_id=ChIJlUfxPYIz-F8RSh7ml54YJ6g" },
+        { time:"12:00", tag:"🏛 景点", cls:"see", title:"兼六园", desc:"7:00–18:00。日本三名园之一，慢慢走一圈约一小时。徽轸灯笼那个角度是标准机位。", map:"https://www.google.com/maps/search/?api=1&query=兼六園&query_place_id=ChIJBVmy-YMz-F8R5PID8D17Cpc" },
+        { time:"14:00", tag:"🏛 景点", cls:"see", title:"21 世纪美术馆", desc:"10:00–18:00，<b>周一闭馆，今天周二正常开</b>。圆形玻璃建筑本身就是作品。<b>《泳池》要在官网另外预约入场时段</b>，当天早上就能约，别到了才想起来。", map:"https://www.google.com/maps/search/?api=1&query=金沢21世紀美術館&query_place_id=ChIJAbhT24Az-F8RwWhli9sBKlE" },
+        { time:"16:00", tag:"🏛 景点", cls:"see", title:"东茶屋街", desc:"金箔、和菓子、老茶屋改的咖啡店。傍晚灯笼亮起来最好看，人也比白天少。", map:"https://www.google.com/maps/search/?api=1&query=ひがし茶屋街 金沢&query_place_id=ChIJEbgqqAwz-F8RYPj--uytXHI" },
+        { time:"18:30", tag:"🧳 住宿", cls:"bag", title:"住金泽站附近", desc:"明早 7:23 的机场巴士从<b>金泽站西口</b>发车，住站边可以多睡半小时。晚饭站内和站前都很多选择。",
+          sub:["今晚把行李彻底收完，明早只剩拎包出门","<b>先买好明早的机场巴士票</b>（北铁チケットセンター），省得早上排队","确认酒店能否 6:45 前退房"],
+          map:"https://www.google.com/maps/search/?api=1&query=金沢駅&query_place_id=ChIJBYa7A0Iz-F8R6qe7HgH2XV0" }
+      ],
+      options: [
+        { title:"想加点意外的：<b>妙立寺（忍者寺）</b>", desc:"9:00–16:00，<b>必须预约</b>，导览是日语但有中英文手册，馆内禁摄。机关暗道、隐藏楼梯，比想象中好玩。在犀川对岸的野町，离东茶屋街稍远，要取舍。", map:"https://www.google.com/maps/search/?api=1&query=妙立寺 金沢&query_place_id=ChIJuYLrXHs0-F8RGY1Ld3voBB4" },
+        { title:"不想赶景点的版本", desc:"近江町吃一顿 + 兼六园慢慢坐一下午 + 东茶屋街喝杯茶，就够了。金泽本来也不是拿来冲刺的城市，明天还要早起。", map:"https://www.google.com/maps/search/?api=1&query=兼六園&query_place_id=ChIJBVmy-YMz-F8R5PID8D17Cpc" }
+      ]
+    },
+    { n: 6, date: "9/16 · 周三", title: "跨国转场 · 首尔",
+      note: "全程唯一没有备份的一天。好在住金泽之后只剩「一段巴士」，北铁官方就把这班车标为 KE2190 的接续车。",
+      items: [
+        { time:"06:45", tag:"🧳 行李", cls:"bag", title:"退房", desc:"前一晚已经收好行李，今早只需要拎包下楼。", map:"https://www.google.com/maps/search/?api=1&query=金沢駅&query_place_id=ChIJBYa7A0Iz-F8R6qe7HgH2XV0" },
+        { time:"07:05", tag:"🚌 交通", cls:"air", title:"金泽站西口 · 提前排队", desc:"机场巴士是<b>座席定员制，满员会被直接拒载</b>，别踩点到。车上支持 ICa 和信用卡触碰支付，但票最好前一天就买好。", map:"https://www.google.com/maps/search/?api=1&query=金沢駅西口" },
+        { time:"07:23", tag:"🚌 交通", cls:"air", title:"机场巴士 → 小松机场 07:55", desc:"1,400 日元，约 32 分钟，<b>全程零换乘</b>。北铁 9 月时刻表把这班直接标注为 KE2190 的接续车，官方接续时间 2 小时 20 分。<b>⚠️ 北陆道正在翻修施工，可能晚点</b>，不过这段余量够吸收。",
+          sub:["前一班是金泽站西口 6:05 发（6:50 到），太早","后一班 9:23 发（9:55 到），<b>赶不上 10:15 的飞机</b>"],
+          map:"https://www.google.com/maps/search/?api=1&query=小松空港&query_place_id=ChIJb2kmYTZR-F8Rb2lWatuVL5Q" },
+        { time:"08:15", tag:"✈️ 机场", cls:"air", title:"小松机场值机", desc:"国际线提前 2 小时。机场很小，但<b>国际线只有一条安检通道</b>，别掐点。",
+          sub:["大韩经济舱托运 <b>1 件 23kg</b>、三边和 158cm；手提 12kg","二楼免税店可以逛，但别买太多 —— 首尔还有两天要买"],
+          map:"https://www.google.com/maps/search/?api=1&query=小松空港&query_place_id=ChIJb2kmYTZR-F8Rb2lWatuVL5Q" },
+        { time:"10:15", tag:"✈️ 机场", cls:"air", title:"KE2190 小松 → 仁川 T2", desc:"大韩航空，飞行 1 小时 55 分，<b>12:10 落地仁川 T2</b>。<b>这是全程唯一没有备份的一环</b> —— 每天只有这一班。<b>注意：9/18 回程是从 T1 出发</b>，两个航站楼之间靠免费穿梭巴士。", map:"https://www.google.com/maps/search/?api=1&query=仁川国際空港第2ターミナル" },
+        { time:"13:30", tag:"🛍 购物", cls:"shop", title:"进明洞", desc:"中国护照排队加取行李，出关大概 13:10 前后。T2 的 AREX 直通车到首尔站约 51 分，或机场巴士直达明洞。提前在线填好韩国电子入境卡能省点时间。", map:"https://www.google.com/maps/search/?api=1&query=明洞&query_place_id=ChIJJXcc9--ifDURb8zmFI_J64s" },
+        { time:"14:30", tag:"🧳 住宿", cls:"bag", title:"入住 57 Myeongdong Hostel", desc:"明洞正中心，含早餐，每层有洗衣机，紧邻机场巴士站。房间和卫生间都小，隔音一般。住两晚的话可以考虑升级成小型商务酒店。", map:"https://www.google.com/maps/search/?api=1&query=57 Myeongdong Hostel&query_place_id=ChIJwQbCIfGifDURAYPSlU8eeTw" },
+        { time:"15:30", tag:"🛍 购物", cls:"shop", title:"明洞先逛一轮", desc:"免税店、乐天百货、新世界都在走路范围。今天先摸清位置和价格，重货明天买 —— 反正还有一整天。", map:"https://www.google.com/maps/search/?api=1&query=明洞&query_place_id=ChIJJXcc9--ifDURb8zmFI_J64s" }
+      ],
+      options: [
+        { title:"如果这天没住金泽（备用方案）", desc:"从高冈走就是三段接驳：06:15 打车 高冈站→新高冈 → <b>06:46 つるぎ</b> → 小松 07:13 → <b>08:05</b> 北铁巴士（310 日元）→ 机场 08:17。⚠️ 速达型つるぎ<b>不停小松</b>，必须按「新高冈→小松」站到站出票。", map:"https://www.google.com/maps/search/?api=1&query=新高岡駅&query_place_id=ChIJVTIUNuOC918R3xYj2Cllhak" }
+      ]
+    },
+    { n: 7, date: "9/17 · 周四", title: "首尔整天 · 购物",
+      note: "唯一完整的首尔日，全天自由。重货今天买完 —— 明天上午只剩两三个小时，而且要拖着箱子。",
+      items: [
+        { time:"10:00", tag:"🛍 购物", cls:"shop", title:"明洞 · 美妆和免税", desc:"药妆店早上人少，慢慢挑。乐天免税明洞本店在乐天百货楼上，<b>免税品是在机场提货的</b>，买了不用自己背。", map:"https://www.google.com/maps/search/?api=1&query=明洞&query_place_id=ChIJJXcc9--ifDURb8zmFI_J64s" },
+        { time:"13:00", tag:"🍜 美食", cls:"food", title:"午饭 · 明洞饺子或烤肉", desc:"明洞餐厅密度高但价格偏游客向，往乙支路方向走两条街会好很多。", map:"https://www.google.com/maps/search/?api=1&query=乙支路 ソウル" },
+        { time:"14:30", tag:"🛍 购物", cls:"shop", title:"东大门 · 服装批发", desc:"地铁 4 号线从明洞两站就到。DDP 那一带的批发商城开到深夜，价格比明洞低一档。", map:"https://www.google.com/maps/search/?api=1&query=東大門デザインプラザ" },
+        { time:"18:00", tag:"🧳 行李", cls:"bag", title:"回酒店整理 · 算行李", desc:"日本买的加韩国买的，<b>回程只有 1 件托运额</b>。超了就现场补钱，或者在酒店附近的邮局寄一箱回国。",
+          sub:["山航经济舱基础额度以票面为准，<b>今晚就查清楚</b>","液体和刀具类要放托运","免税店买的酒水在机场提货，不占托运额但要放好"],
+          map:"https://www.google.com/maps/search/?api=1&query=明洞&query_place_id=ChIJJXcc9--ifDURb8zmFI_J64s" }
+      ],
+      options: [
+        { title:"不想只逛街：<b>宫殿和老城</b>", desc:"景福宫（周二闭，今天周四开）→ 北村韩屋村 → 三清洞散步 → 仁寺洞。从明洞地铁三站以内，半天够。", map:"https://www.google.com/maps/search/?api=1&query=景福宮 ソウル" },
+        { title:"想去更年轻的区", desc:"弘大 → 延南洞 → 圣水洞。买手店和咖啡馆密度最高，但离明洞远，来回要留一小时车程。", map:"https://www.google.com/maps/search/?api=1&query=聖水洞 ソウル" }
+      ]
+    },
+    { n: 8, date: "9/18 · 周五", title: "青岛转机 · 回杭州",
+      note: "航班 15:30 从<b>仁川 T1</b> 起飞（来的时候是 T2，别跑错）。上午还能用两三个小时，但要拖着行李，别跑远。",
+      items: [
+        { time:"09:00", tag:"🍜 美食", cls:"food", title:"早饭 + 最后补货", desc:"明洞的便利店和药妆店早上就开，漏买的现在补。买完直接回酒店取箱子。", map:"https://www.google.com/maps/search/?api=1&query=明洞&query_place_id=ChIJJXcc9--ifDURb8zmFI_J64s" },
+        { time:"11:30", tag:"✈️ 机场", cls:"air", title:"出发去仁川 T1", desc:"机场巴士或 AREX，路上 70–80 分钟。国际航班提前 3 小时，<b>目标 12:30 到 T1</b>。免税店提货点也在 T1。", map:"https://www.google.com/maps/search/?api=1&query=仁川国際空港第1ターミナル" },
+        { time:"15:30", tag:"✈️ 机场", cls:"air", title:"仁川 T1 → 青岛胶东", desc:"山航 SC4614，737-800，<b>16:05 到青岛</b>，飞行 1 小时 35 分，无餐食。", map:"https://www.google.com/maps/search/?api=1&query=青岛胶东国际机场" },
+        { time:"16:05", tag:"🧳 中转", cls:"bag", title:"青岛中转（2 小时 35 分）", desc:"行李直挂杭州，不用重新托运。但<b>人要走完国际到达的全套流程</b>：边检、海关、再进国内出发安检。",
+          sub:["2 小时 35 分够用但不宽裕，<b>下机后别逛，直接走流程</b>","第一段一旦延误超过一小时就要盯紧，及时找地服改签","国内段的行李额可能和国际段不同，出票时一并确认"],
+          map:"https://www.google.com/maps/search/?api=1&query=青岛胶东国际机场" },
+        { time:"18:40", tag:"✈️ 机场", cls:"air", title:"青岛 → 杭州萧山 T3", desc:"山航 SC4769，737-800，<b>20:25 到杭州</b>，飞行 1 小时 45 分。", map:"https://www.google.com/maps/search/?api=1&query=杭州萧山国际机场T3" }
+      ],
+      options: [
+        { title:"如果想上午多留一会儿", desc:"明洞到仁川的机场巴士班次很密，最晚 12:00 出发还赶得上（13:20 到 T1，剩 2 小时 10 分）。但那样就没有任何缓冲了，早高峰堵一次就危险。" }
+      ]
+    }
+  ],
+  checklist: [
+    "<b>KE2190（9/16 小松→仁川）已订</b> —— 每天只有一班、没有备份，其余环节全部围着它排",
+    "订 9/12 东京→新高冈指定席（周六班次以购票页为准）",
+    "<b>订 9/15 晚金泽站附近的住宿</b>，并在 9/15 白天买好次日 7:23 的机场巴士票",
+    "<b>高冈 3 晚住宿今晚就订</b>；问清 check-in 时间",
+    "<b>问清上野青旅前台几点关</b> —— 9/11 到店已近 22:30",
+    "想做能作锡器体验的话现在就发预约邮件，顺便问周一开不开",
+    "金泽 21 世纪美术馆的《泳池》要单独在官网约时段",
+    "东京落地就办一张 Suica —— 高冈的城端线、冰见线、万葉線今年 3 月起全部可刷",
+    "人均备 <b>2 万日元现金</b>，重点是 1000 日元以下的零钞硬币",
+    "四段航班（港航／大韩／山航两段）的行李额拉齐，别在机场现场补钱",
+    "9 月中旬是台风高峰，建议买含航班取消和延误的保险"
+  ],
+  footerH: "白虾、铜器、兼六园，和一枚盖着哆啦A梦戳的明信片 ✉️",
+  footerNote: "白川乡这次舍掉了 —— 合掌屋配雪才是它的高光，留给冬天再来。班次已按官方时刻表核对到 2026 年 9 月（万葉線 8/1 版、北铁机场巴士 9 月版、JR 西日本 9 月号、京成 Skyliner 现行版）。仍需现场确认：9/12 周六东京→新高冈的实际车次、9/14 雨晴的回程时刻。营业时间以出行当天为准。"
+};
+
+/* ---------------- renderer (no need to edit below) ---------------- */
+const navUrl = m => !m ? null : (/^https?:/.test(m) ? m : "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(m));
+const navName = m => { try { const u=new URL(navUrl(m)); return decodeURIComponent(u.searchParams.get("query")||"").split(/[,，]/)[0]||"地图"; } catch(e){ return "地图"; } };
+const el = (h)=>{const d=document.createElement("div");d.innerHTML=h.trim();return d.firstChild;};
+
+function render(t){
+  const app=document.getElementById("app");
+  const chips=t.chips.map(c=>`<span class="chip${c.lead?' lead':''}">${c.text}</span>`).join("");
+  const navs=t.days.map(d=>`<a href="#d${d.n}"${d.n===t.days[0].n?' class="on"':''}><span class="d">${d.n}</span>${d.title.split("·").pop().trim()}</a>`).join("");
+  const info=t.info.map(r=>`<div class="row${r.tip?' tip':''}"><div class="ic">${r.ic}</div><div>${r.html}</div></div>`).join("");
+
+  const days=t.days.map(d=>{
+    const items=d.items.map((it,i)=>{
+      const last=(i===d.items.length-1 && (!d.options||!d.options.length));
+      const navbtn=it.map?`<a class="nav-btn" href="${navUrl(it.map)}" target="_blank" rel="noopener">📍 导航 ${navName(it.map)}</a>`:"";
+      const sub=it.sub?`<ul class="sub">${it.sub.map(s=>`<li>${s}</li>`).join("")}</ul>`:"";
+      return `<div class="entry rv"><div class="time">${it.time||""}</div><div class="mk"><div class="dot"></div></div><div class="content">
+        ${it.tag?`<span class="tag t-${it.cls||'see'}">${it.tag}</span>`:""}
+        <div class="ttl">${it.title}</div>${it.desc?`<div class="desc">${it.desc}</div>`:""}${sub}${navbtn}</div></div>`;
+    }).join("");
+    const opts=(d.options||[]).map(o=>{
+      const nb=o.map?`<a class="nav-btn" href="${navUrl(o.map)}" target="_blank" rel="noopener">📍 导航 ${navName(o.map)}</a>`:"";
+      return `<div class="opt rv"><div class="lbl">◆ 可选 · 自由安排</div><div class="ot">${o.title}</div>${o.desc?`<div class="od">${o.desc}</div>`:""}${nb}</div>`;
+    }).join("");
+    return `<section class="day" id="d${d.n}"><div class="day-head rv"><div class="day-num">${d.n}<span>${d.date||""}</span></div>
+      <div class="day-title">${d.title}</div>${d.note?`<div class="day-note">${d.note}</div>`:""}</div><div class="tl">${items}${opts}</div></section>`;
+  }).join("");
+
+  const check=`<section class="check rv"><h3>出发前 Checklist</h3><div class="cs">出门前逐项过一遍</div><ul>${
+    t.checklist.map((c,i)=>`<li><span class="n">${i+1}</span><div>${c}</div></li>`).join("")}</ul></section>`;
+
+  app.innerHTML=`<header class="hero"><div class="kicker">${t.kicker}</div>
+    <h1>${t.h1[0]}<span>${t.h1[1]}</span><br>${t.h1[2]||""}</h1><div class="rule"></div>
+    <p class="tag-line">${t.tagline}</p><div class="chips">${chips}</div></header>
+    <section class="info rv">${info}</section>
+    <nav class="daynav">${navs}</nav>${days}${check}
+    <footer><div class="h">${t.footerH}</div>${t.footerNote}</footer>`;
+
+  // reveal-on-scroll
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{threshold:.12,rootMargin:"0px 0px -8% 0px"});
+  document.querySelectorAll(".rv").forEach(x=>io.observe(x));
+  // active day nav
+  const links=[...document.querySelectorAll(".daynav a")];
+  const navIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove("on"));const a=links.find(l=>l.getAttribute("href")==="#"+e.target.id);if(a)a.classList.add("on");}}),{rootMargin:"-45% 0px -50% 0px"});
+  t.days.forEach(d=>{const s=document.getElementById("d"+d.n);if(s)navIO.observe(s);});
+}
+render(TRIP);
+</script>
+</body>
+</html>
