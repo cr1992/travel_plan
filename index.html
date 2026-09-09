@@ -3,573 +3,340 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TRAVEL PLAN · 行程索引</title>
+<title>行程索引</title>
 <style>
-  /* ---- palette & type lifted from 新加坡行程-v2 ---- */
-  :root {
-    --bg: #FDFDFC;
-    --card: #FFFFFF;
-    --kraft: #ECE5D5;
-    --kraft-deep: #E3D9C3;
-    --clay: #D97757;
-    --clay-deep: #BD5A39;
-    --ink: #1F1E1D;
-    --ink-soft: #615C53;
-    --ink-faint: #928C81;
-    --line: rgba(31,30,29,.12);
-    --green: #4C6A42;
-    --shadow: 0 12px 32px -16px rgba(61,55,45,.45);
-    --disp: "Fraunces", Georgia, "Songti SC", "STSong", "Noto Serif SC", serif;
-    --serif: Georgia, "Songti SC", "STSong", "Noto Serif SC", serif;
-    --sans: -apple-system, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
-    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Courier New", monospace;
+  /* palette shared with itinerary.template.html — override via SITE.theme */
+  :root{
+    --bg:#FDFDFC; --card:#FFFFFF; --kraft:#ECE5D5; --kraft-deep:#E3D9C3;
+    --clay:#D97757; --clay-deep:#BD5A39;
+    --ink:#1F1E1D; --ink-soft:#615C53; --ink-faint:#928C81;
+    --line:rgba(31,30,29,.12); --green:#4C6A42;
+    --shadow:0 12px 32px -16px rgba(61,55,45,.45);
+    --disp:"Fraunces",Georgia,"Songti SC","STSong",serif;
+    --serif:Georgia,"Songti SC","STSong","Noto Serif SC",serif;
+    --sans:-apple-system,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Courier New",monospace;
   }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{background:var(--bg);}
+  body{min-height:100vh;font-family:var(--sans);color:var(--ink);
+    background:radial-gradient(ellipse 130% 50% at 50% -8%, #F6F1E6 0%, transparent 60%),var(--bg);overflow-x:hidden;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;
+    background-image:linear-gradient(rgba(31,30,29,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(31,30,29,.028) 1px,transparent 1px);
+    background-size:48px 48px;}
+  .wrap{max-width:880px;margin:0 auto;padding:52px 20px 96px;position:relative;}
+  .grain::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:3;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* ---- ticket-office header ---- */
+  .board{background:var(--kraft);border:1px solid var(--line);border-radius:16px;padding:30px 34px 26px;box-shadow:var(--shadow);position:relative;overflow:hidden;}
+  .board-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;color:var(--ink-faint);font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:20px;padding-right:112px;}
+  #clock{color:var(--clay-deep);font-variant-numeric:tabular-nums;}
+  .board h1{font-family:var(--disp);font-weight:900;color:var(--ink);font-size:clamp(30px,6vw,52px);letter-spacing:.04em;line-height:1.05;display:flex;align-items:center;flex-wrap:wrap;gap:.3em;}
+  .board h1 .rise{display:inline-block;animation:riseIn .55s cubic-bezier(.2,.8,.3,1.15) both;}
+  @keyframes riseIn{from{transform:translateY(.6em) rotate(2deg);opacity:0;}to{transform:translateY(0) rotate(0);opacity:1;}}
+  .board h1 .mark{font-size:.55em;color:var(--clay);transform:translateY(-3px);}
+  .board .sub{margin-top:12px;color:var(--ink-soft);font-family:var(--serif);font-size:15px;letter-spacing:.38em;}
+  .stamp{position:absolute;top:22px;right:28px;width:92px;height:92px;border:2.5px solid var(--clay);border-radius:50%;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--clay);
+    font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;transform:rotate(11deg);opacity:.82;
+    animation:stampIn .5s cubic-bezier(.2,1.4,.4,1) .5s both;pointer-events:none;
+    -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.35' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.6 -.25'/%3E%3C/filter%3E%3Crect width='90' height='90' filter='url(%23r)'/%3E%3C/svg%3E");
+    mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.35' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.6 -.25'/%3E%3C/filter%3E%3Crect width='90' height='90' filter='url(%23r)'/%3E%3C/svg%3E");
+    -webkit-mask-size:cover;mask-size:cover;}
+  .stamp b{font-size:14px;letter-spacing:.1em;}
+  @keyframes stampIn{from{transform:rotate(11deg) scale(1.6);opacity:0;}to{transform:rotate(11deg) scale(1);opacity:.82;}}
+  .board-meta{margin-top:22px;padding-top:14px;border-top:1px dashed rgba(31,30,29,.22);display:flex;flex-wrap:wrap;gap:8px 28px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;}
+  .board-meta b{color:var(--ink);font-weight:400;}
+  .board-meta .ok{color:var(--green);} .board-meta .bad{color:var(--clay-deep);}
+  .blink{animation:blink 1.1s steps(2) infinite;} @keyframes blink{50%{opacity:.25;}}
 
-  html { background: var(--bg); }
+  /* ---- search ---- */
+  .search{margin:26px 0 36px;display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:10px;background:var(--card);padding:13px 16px;box-shadow:0 4px 14px -10px rgba(61,55,45,.35);}
+  .search span{color:var(--clay-deep);font-family:var(--mono);font-size:12px;letter-spacing:.2em;white-space:nowrap;}
+  .search input{flex:1;background:transparent;border:none;outline:none;color:var(--ink);font-family:var(--mono);font-size:15px;letter-spacing:.04em;caret-color:var(--clay);}
+  .search input::placeholder{color:var(--ink-faint);}
 
-  body {
-    min-height: 100vh;
-    font-family: var(--sans);
-    color: var(--ink);
-    background:
-      radial-gradient(ellipse 130% 50% at 50% -8%, #F6F1E6 0%, transparent 60%),
-      var(--bg);
-    overflow-x: hidden;
-  }
+  /* ---- groups ---- */
+  .gate{margin:40px 0 16px;display:flex;align-items:center;gap:14px;color:var(--clay-deep);font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;}
+  .gate::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent);}
 
-  /* faint stationery grid */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(31,30,29,.028) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(31,30,29,.028) 1px, transparent 1px);
-    background-size: 48px 48px;
-    pointer-events: none;
-  }
+  /* ---- boarding pass ---- */
+  .pass-list{display:flex;flex-direction:column;gap:22px;perspective:1200px;}
+  .pass{display:grid;grid-template-columns:34px 1fr 168px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:14px;text-decoration:none;position:relative;box-shadow:var(--shadow);
+    transition:transform .28s cubic-bezier(.2,.9,.3,1.3),box-shadow .28s ease;animation:dealIn .55s cubic-bezier(.2,.8,.3,1.1) both;isolation:isolate;overflow:hidden;}
+  @keyframes dealIn{from{opacity:0;transform:translateY(26px) rotateX(8deg);}to{opacity:1;transform:translateY(0) rotateX(0);}}
+  .pass:hover{transform:translateY(-4px) rotate(-.4deg);box-shadow:0 22px 44px -18px rgba(61,55,45,.55);}
+  .pass-edge{background:var(--clay);color:#FFF6EF;writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;letter-spacing:.42em;text-transform:uppercase;padding:10px 0;}
+  .pass-main{padding:19px 22px 17px;min-width:0;}
+  .pass-route{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--ink-faint);text-transform:uppercase;margin-bottom:7px;}
+  .pass-no{color:var(--clay-deep);font-weight:700;}
+  .pass-title{font-family:var(--disp);font-weight:900;font-size:clamp(20px,3.4vw,28px);line-height:1.25;letter-spacing:.01em;overflow-wrap:anywhere;}
+  .pass-sub{margin-top:6px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);line-height:1.6;}
+  .pass-stub{border-left:2px dashed #C9BFA8;background:var(--kraft);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:14px 12px;position:relative;}
+  .pass-stub::before,.pass-stub::after{content:"";position:absolute;left:-10px;width:18px;height:18px;border-radius:50%;background:var(--bg);border:1px solid var(--line);z-index:2;}
+  .pass-stub::before{top:-10px;} .pass-stub::after{bottom:-10px;}
+  .barcode{width:100%;height:40px;opacity:.8;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 5px,var(--ink) 5px 6px,transparent 6px 11px,var(--ink) 11px 14px,transparent 14px 16px,var(--ink) 16px 17px,transparent 17px 22px);}
+  .stub-view{font-family:var(--mono);font-size:11px;letter-spacing:.3em;font-weight:700;color:var(--clay-deep);text-transform:uppercase;transition:letter-spacing .25s ease;}
+  .pass:hover .stub-view{letter-spacing:.45em;}
+  .stub-size{font-family:var(--mono);font-size:9px;color:var(--ink-faint);letter-spacing:.15em;}
 
-  .wrap {
-    max-width: 880px;
-    margin: 0 auto;
-    padding: 52px 20px 96px;
-    position: relative;
-  }
+  .status{margin-top:44px;text-align:center;color:var(--ink-faint);font-family:var(--mono);font-size:13px;letter-spacing:.22em;text-transform:uppercase;line-height:2.4;}
+  .status .accent{color:var(--clay-deep);}
+  footer{margin-top:76px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--ink-faint);text-transform:uppercase;line-height:2.3;}
+  footer a{color:var(--clay-deep);text-decoration:none;} footer a:hover{color:var(--clay);}
 
-  /* paper grain, reused on header + passes */
-  .grain::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 3;
+  @media (max-width:600px){
+    .stamp{width:72px;height:72px;font-size:8px;top:14px;right:14px;} .stamp b{font-size:11px;} .board-top{padding-right:86px;}
   }
-
-  /* ============ TICKET-OFFICE HEADER ============ */
-  .board {
-    background: var(--kraft);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 30px 34px 26px;
-    box-shadow: var(--shadow);
-    position: relative;
-    overflow: hidden;
+  @media (max-width:560px){
+    .pass{grid-template-columns:26px 1fr;}
+    .pass-stub{grid-column:1/-1;flex-direction:row;border-left:none;border-top:2px dashed #C9BFA8;padding:12px 18px;}
+    .pass-stub::before,.pass-stub::after{left:auto;top:-10px;}
+    .pass-stub::before{left:-10px;} .pass-stub::after{right:-10px;bottom:auto;}
+    .barcode{width:90px;height:28px;flex:none;} .stub-size{margin-left:auto;}
   }
-
-  .board-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 16px;
-    color: var(--ink-faint);
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    padding-right: 112px; /* clear the passport stamp */
-  }
-  #clock { color: var(--clay-deep); font-variant-numeric: tabular-nums; }
-
-  .board h1 {
-    font-family: var(--disp);
-    font-weight: 900;
-    color: var(--ink);
-    font-size: clamp(30px, 6vw, 52px);
-    letter-spacing: .04em;
-    line-height: 1.05;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: .3em;
-  }
-  .board h1 .rise { display: inline-block; animation: riseIn .55s cubic-bezier(.2,.8,.3,1.15) both; }
-  @keyframes riseIn {
-    from { transform: translateY(.6em) rotate(2deg); opacity: 0; }
-    to   { transform: translateY(0) rotate(0); opacity: 1; }
-  }
-  .board h1 .plane { font-size: .55em; color: var(--clay); transform: translateY(-3px); }
-
-  .board .sub {
-    margin-top: 12px;
-    color: var(--ink-soft);
-    font-family: var(--serif);
-    font-size: 15px;
-    letter-spacing: .38em;
-  }
-
-  /* rubber passport stamp */
-  .stamp {
-    position: absolute;
-    top: 22px;
-    right: 28px;
-    width: 92px;
-    height: 92px;
-    border: 2.5px solid var(--clay);
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
-    color: var(--clay);
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    transform: rotate(11deg);
-    opacity: .82;
-    animation: stampIn .5s cubic-bezier(.2,1.4,.4,1) .5s both;
-    pointer-events: none;
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.35' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.6 -.25'/%3E%3C/filter%3E%3Crect width='90' height='90' filter='url(%23r)'/%3E%3C/svg%3E");
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.35' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.6 -.25'/%3E%3C/filter%3E%3Crect width='90' height='90' filter='url(%23r)'/%3E%3C/svg%3E");
-    -webkit-mask-size: cover;
-    mask-size: cover;
-  }
-  .stamp b { font-size: 14px; letter-spacing: .1em; }
-  @keyframes stampIn {
-    from { transform: rotate(11deg) scale(1.6); opacity: 0; }
-    to   { transform: rotate(11deg) scale(1); opacity: .82; }
-  }
-
-  .board-meta {
-    margin-top: 22px;
-    padding-top: 14px;
-    border-top: 1px dashed rgba(31,30,29,.22);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 28px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .14em;
-    color: var(--ink-faint);
-    text-transform: uppercase;
-  }
-  .board-meta b { color: var(--ink); font-weight: 400; }
-  .board-meta .ok { color: var(--green); }
-  .board-meta .bad { color: var(--clay-deep); }
-  .blink { animation: blink 1.1s steps(2) infinite; }
-  @keyframes blink { 50% { opacity: .25; } }
-
-  /* ============ SEARCH ============ */
-  .search {
-    margin: 26px 0 36px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    background: var(--card);
-    padding: 13px 16px;
-    box-shadow: 0 4px 14px -10px rgba(61,55,45,.35);
-  }
-  .search span { color: var(--clay-deep); font-family: var(--mono); font-size: 12px; letter-spacing: .2em; white-space: nowrap; }
-  .search input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: var(--ink);
-    font-family: var(--mono);
-    font-size: 15px;
-    letter-spacing: .04em;
-    caret-color: var(--clay);
-  }
-  .search input::placeholder { color: var(--ink-faint); }
-
-  /* ============ GATE GROUPS ============ */
-  .gate {
-    margin: 40px 0 16px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    color: var(--clay-deep);
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .3em;
-    text-transform: uppercase;
-  }
-  .gate::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--line), transparent); }
-
-  /* ============ BOARDING PASS ============ */
-  .pass-list { display: flex; flex-direction: column; gap: 22px; perspective: 1200px; }
-
-  .pass {
-    display: grid;
-    grid-template-columns: 34px 1fr 168px;
-    background: var(--card);
-    color: var(--ink);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    text-decoration: none;
-    position: relative;
-    box-shadow: var(--shadow);
-    transition: transform .28s cubic-bezier(.2,.9,.3,1.3), box-shadow .28s ease;
-    animation: dealIn .55s cubic-bezier(.2,.8,.3,1.1) both;
-    isolation: isolate;
-    overflow: hidden;
-  }
-  @keyframes dealIn {
-    from { opacity: 0; transform: translateY(26px) rotateX(8deg); }
-    to   { opacity: 1; transform: translateY(0) rotateX(0); }
-  }
-  .pass:hover {
-    transform: translateY(-4px) rotate(-.4deg);
-    box-shadow: 0 22px 44px -18px rgba(61,55,45,.55);
-  }
-
-  /* left airline edge */
-  .pass-edge {
-    background: var(--clay);
-    color: #FFF6EF;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: .42em;
-    text-transform: uppercase;
-    padding: 10px 0;
-  }
-
-  .pass-main { padding: 19px 22px 17px; min-width: 0; }
-
-  .pass-route {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: .2em;
-    color: var(--ink-faint);
-    text-transform: uppercase;
-    margin-bottom: 7px;
-  }
-  .pass-no { color: var(--clay-deep); font-weight: 700; }
-
-  .pass-title {
-    font-family: var(--disp);
-    font-weight: 900;
-    font-size: clamp(20px, 3.4vw, 28px);
-    line-height: 1.25;
-    letter-spacing: .01em;
-    overflow-wrap: anywhere;
-  }
-
-  /* perforated kraft stub */
-  .pass-stub {
-    border-left: 2px dashed #C9BFA8;
-    background: var(--kraft);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 14px 12px;
-    position: relative;
-  }
-  /* punch holes */
-  .pass-stub::before, .pass-stub::after {
-    content: "";
-    position: absolute;
-    left: -10px;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: var(--bg);
-    border: 1px solid var(--line);
-    z-index: 2;
-  }
-  .pass-stub::before { top: -10px; }
-  .pass-stub::after  { bottom: -10px; }
-
-  .barcode {
-    width: 100%;
-    height: 40px;
-    background: repeating-linear-gradient(90deg,
-      var(--ink) 0 2px, transparent 2px 5px,
-      var(--ink) 5px 6px, transparent 6px 11px,
-      var(--ink) 11px 14px, transparent 14px 16px,
-      var(--ink) 16px 17px, transparent 17px 22px);
-    opacity: .8;
-  }
-  .stub-view {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .3em;
-    font-weight: 700;
-    color: var(--clay-deep);
-    text-transform: uppercase;
-    transition: letter-spacing .25s ease;
-  }
-  .pass:hover .stub-view { letter-spacing: .45em; }
-  .stub-size { font-family: var(--mono); font-size: 9px; color: var(--ink-faint); letter-spacing: .15em; }
-
-  /* status lines (loading / error / empty) */
-  .status {
-    margin-top: 44px;
-    text-align: center;
-    color: var(--ink-faint);
-    font-family: var(--mono);
-    font-size: 13px;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    line-height: 2.4;
-  }
-  .status .accent { color: var(--clay-deep); }
-
-  footer {
-    margin-top: 76px;
-    text-align: center;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: .24em;
-    color: var(--ink-faint);
-    text-transform: uppercase;
-    line-height: 2.3;
-  }
-  footer a { color: var(--clay-deep); text-decoration: none; }
-  footer a:hover { color: var(--clay); }
-
-  @media (max-width: 600px) {
-    .stamp { width: 72px; height: 72px; font-size: 8px; top: 14px; right: 14px; }
-    .stamp b { font-size: 11px; }
-    .board-top { padding-right: 86px; }
-  }
-  @media (max-width: 560px) {
-    .pass { grid-template-columns: 26px 1fr; }
-    .pass-stub {
-      grid-column: 1 / -1;
-      flex-direction: row;
-      border-left: none;
-      border-top: 2px dashed #C9BFA8;
-      padding: 12px 18px;
-    }
-    .pass-stub::before, .pass-stub::after { left: auto; top: -10px; }
-    .pass-stub::before { left: -10px; }
-    .pass-stub::after  { right: -10px; bottom: auto; }
-    .barcode { width: 90px; height: 28px; flex: none; }
-    .stub-size { margin-left: auto; }
+  @media (prefers-reduced-motion:reduce){
+    .pass,.board h1 .rise,.stamp{animation:none!important;} .pass{transition:none;} .blink{animation:none;}
   }
 </style>
 </head>
 <body>
 <div class="wrap">
-
   <header class="board grain">
-    <div class="board-top">
-      <span>✦ Travel Documents ✦</span>
-      <span id="clock">--:--:--</span>
-    </div>
-    <h1 id="boardTitle"><span class="plane">✈</span>DEPARTURES</h1>
-    <div class="sub">旅 行 计 划 · 行 程 索 引</div>
-    <div class="stamp"><span>· Travel ·</span><b>✈ PLAN</b><span>Approved</span></div>
+    <div class="board-top"><span id="headerTag"></span><span id="clock"></span></div>
+    <h1 id="boardTitle"></h1>
+    <div class="sub" id="boardSub"></div>
+    <div class="stamp" id="stamp"></div>
     <div class="board-meta">
-      <span>TERMINAL <b id="metaRepo">—</b></span>
+      <span id="mRepoWrap">SOURCE <b id="metaRepo">—</b></span>
       <span>PAGES <b id="metaCount">—</b></span>
-      <span>LAST PUSH <b id="metaPush">—</b></span>
+      <span>UPDATED <b id="metaPush">—</b></span>
       <span id="metaStatus"><b class="blink">SYNCING</b></span>
     </div>
   </header>
-
-  <div class="search">
-    <span>SEARCH ▸</span>
-    <input id="q" type="text" placeholder="输入目的地或文件名过滤…" autocomplete="off">
-  </div>
-
-  <main id="app">
-    <div class="status"><span class="accent blink">●</span> 正在读取航班信息 …</div>
-  </main>
-
-  <footer>
-    <a id="repoLink" href="#" target="_blank" rel="noopener">view repository →</a>
-  </footer>
-
+  <div class="search"><span>SEARCH ▸</span><input id="q" type="text" autocomplete="off"></div>
+  <main id="app"></main>
+  <footer><a id="repoLink" href="#" target="_blank" rel="noopener"></a></footer>
 </div>
 
 <script>
-(function () {
+/* =====================================================================
+   A self-listing index for a folder of static pages. EDIT ONLY `SITE`.
+   Field reference: skills/travel-itinerary-kit/references/data-schema.md
+
+   Data sources, tried in order when source.mode === "auto":
+     1. manifest  — fetch SITE.source.manifest (built by scripts/build_manifest.py).
+                    Works on any static host, private repo, no API limit, real <title>s.
+     2. github    — GitHub contents API; auto-detects <user>.github.io/<repo>/,
+                    or set source.github = {owner, repo}. Public repos only, rate-limited.
+     3. inline    — SITE.source.items, hardcoded. The only mode that works over file://.
+   ===================================================================== */
+const SITE = {
+  lang: "zh-CN",
+  copy: {
+    brand: "DEPARTURES",
+    mark: "\u2708",
+    headerTag: "\u2726 Travel Documents \u2726",
+    sub: "\u65c5 \u884c \u8ba1 \u5212 \u00b7 \u884c \u7a0b \u7d22 \u5f15",
+    stamp: ["\u00b7 Travel \u00b7", "\u2708 PLAN", "Approved"],
+    edge: "Boarding Pass",
+    ticketPrefix: "TP",
+    gate: "GATE", gateMain: "MAIN",
+    search: "\u8f93\u5165\u76ee\u7684\u5730\u6216\u6587\u4ef6\u540d\u8fc7\u6ee4\u2026",
+    footer: "view repository \u2192",
+    loading: "\u6b63\u5728\u8bfb\u53d6\u822a\u73ed\u4fe1\u606f \u2026",
+    empty: "\u6682\u65e0\u884c\u7a0b\u9875\u9762 \u2014 \u653e\u4e00\u4e2a .html \u8fdb\u6765\u5373\u53ef\u767b\u673a \u2708",
+    error: "\u4fe1\u53f7\u4e2d\u65ad"
+  },
+  clock: true,
+  theme: {},
+  source: {
+    mode: "auto",
+    manifest: "manifest.json",
+    github: { owner: "", repo: "", branch: "" },
+    items: []
+  },
+  extensions: [".html", ".htm", ".pdf"],
+  exclude: ["index.html", "manifest.json", "_*", "draft-*"],
+  groupBy: "folder",
+  repoLink: "https://github.com/cr1992/travel_plan"
+};
+
+(function(){
   "use strict";
+  var C=SITE.copy, S=SITE.source, $=function(id){return document.getElementById(id);};
+  var app=$("app");
+  if(SITE.lang) document.documentElement.lang=SITE.lang;
+  for(var k in (SITE.theme||{})) document.documentElement.style.setProperty("--"+k,SITE.theme[k]);
 
-  /* ---- repo detection: works on any <user>.github.io/<repo>/ without edits ---- */
-  var FALLBACK = { owner: "cr1992", repo: "travel_plan" };
-  function detectRepo() {
-    var m = location.hostname.match(/^([^.]+)\.github\.io$/i);
-    if (m) {
-      var seg = location.pathname.split("/").filter(Boolean);
-      if (seg.length) return { owner: m[1], repo: decodeURIComponent(seg[0]) };
-    }
-    return FALLBACK;
-  }
-
-  var $ = function (id) { return document.getElementById(id); };
-  var app = $("app");
-
-  /* ---- clock ---- */
-  function tick() {
-    var d = new Date();
-    var p = function (n) { return String(n).padStart(2, "0"); };
-    $("clock").textContent = p(d.getHours()) + ":" + p(d.getMinutes()) + ":" + p(d.getSeconds());
-  }
-  tick(); setInterval(tick, 1000);
-
-  /* ---- staggered title reveal ---- */
-  (function () {
-    var h = $("boardTitle");
-    var text = "DEPARTURES";
-    var html = '<span class="plane">✈</span>';
-    for (var i = 0; i < text.length; i++) {
-      html += '<span class="rise" style="animation-delay:' + (i * 55) + 'ms">' + text[i] + "</span>";
-    }
-    h.innerHTML = html;
+  /* ---- chrome ---- */
+  $("headerTag").textContent=C.headerTag||"";
+  $("boardSub").textContent=C.sub||"";
+  $("q").placeholder=C.search||"";
+  $("repoLink").textContent=C.footer||"";
+  (function(){
+    var s=C.stamp||[]; $("stamp").innerHTML=s.length?
+      "<span>"+esc(s[0]||"")+"</span><b>"+esc(s[1]||"")+"</b><span>"+esc(s[2]||"")+"</span>":"";
+    if(!s.length) $("stamp").style.display="none";
   })();
+  (function(){
+    var h=$("boardTitle"), t=String(C.brand||""), html=C.mark?'<span class="mark">'+esc(C.mark)+"</span>":"";
+    for(var i=0;i<t.length;i++) html+='<span class="rise" style="animation-delay:'+(i*55)+'ms">'+esc(t[i])+"</span>";
+    h.innerHTML=html;
+    document.title=(t||"Index")+(C.sub?" · "+C.sub.replace(/\s+/g,""):"");
+  })();
+  if(SITE.clock!==false){ (function tick(){
+      var d=new Date(), p=function(n){return String(n).padStart(2,"0");};
+      $("clock").textContent=p(d.getHours())+":"+p(d.getMinutes())+":"+p(d.getSeconds());
+      setTimeout(tick,1000);
+    })(); } else $("clock").style.display="none";
+  statusLine('<span class="accent blink">●</span> '+esc(C.loading||"Loading …"));
 
   /* ---- helpers ---- */
-  function esc(s) {
-    return s.replace(/[&<>"']/g, function (c) {
-      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
-    });
+  function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+  function fmtSize(b){ if(b==null||isNaN(b)) return "";
+    if(b<1024) return b+" B"; if(b<1048576) return (b/1024).toFixed(1)+" KB"; return (b/1048576).toFixed(1)+" MB";}
+  function encPath(p){return p.split("/").map(encodeURIComponent).join("/");}
+  function ext(p){var m=String(p).match(/\.[A-Za-z0-9]+$/);return m?m[0].toLowerCase():"";}
+  function baseTitle(p){return p.split("/").pop().replace(/\.[^.]+$/,"").replace(/[-_]+/g," ").trim();}
+  function statusLine(html){app.innerHTML='<div class="status">'+html+"</div>";}
+  function glob(pat,name){
+    return new RegExp("^"+pat.split("*").map(function(x){return x.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");}).join(".*")+"$","i").test(name);
   }
-  function fmtSize(b) {
-    if (b == null) return "";
-    if (b < 1024) return b + " B";
-    if (b < 1048576) return (b / 1024).toFixed(1) + " KB";
-    return (b / 1048576).toFixed(1) + " MB";
+  function keep(path){
+    var name=path.split("/").pop();
+    if(SITE.extensions&&SITE.extensions.length&&SITE.extensions.indexOf(ext(path))===-1) return false;
+    return !(SITE.exclude||[]).some(function(p){return glob(p,name)||glob(p,path);});
   }
-  function encPath(p) {
-    return p.split("/").map(encodeURIComponent).join("/");
-  }
-  function titleOf(path) {
-    var name = path.split("/").pop().replace(/\.html?$/i, "");
-    return name.replace(/[-_]+/g, " ").trim();
-  }
-  function statusLine(html) {
-    app.innerHTML = '<div class="status">' + html + "</div>";
+  function groupOf(it){
+    if(it.group) return it.group;
+    if(SITE.groupBy==="none") return null;
+    return it.path.indexOf("/")!==-1?it.path.split("/")[0]:null;
   }
 
   /* ---- render ---- */
-  function render(groups, total) {
-    var html = "";
-    var idx = 0;
-    groups.forEach(function (g) {
-      if (g.name !== null) {
-        html += '<div class="gate">GATE · ' + esc(g.name.toUpperCase()) + "</div>";
-      } else if (groups.length > 1) {
-        html += '<div class="gate">GATE · MAIN</div>';
-      }
-      html += '<div class="pass-list">';
-      g.files.forEach(function (f) {
+  function render(items){
+    items=items.filter(function(it){return keep(it.path);});
+    items.sort(function(a,b){return String(a.path).localeCompare(String(b.path),"zh");});
+    $("metaCount").textContent=String(items.length);
+    if(!items.length){ statusLine(esc(C.empty||"Nothing here yet")); return; }
+
+    var map=new Map();
+    items.forEach(function(it){var g=groupOf(it); if(!map.has(g)) map.set(g,[]); map.get(g).push(it);});
+    var keys=Array.from(map.keys()), ordered=[];
+    if(map.has(null)) ordered.push(null);
+    keys.filter(function(k){return k!==null;}).sort().forEach(function(k){ordered.push(k);});
+
+    var html="", idx=0;
+    ordered.forEach(function(g){
+      if(g!==null) html+='<div class="gate">'+esc(C.gate)+" · "+esc(String(g).toUpperCase())+"</div>";
+      else if(ordered.length>1) html+='<div class="gate">'+esc(C.gate)+" · "+esc(C.gateMain)+"</div>";
+      html+='<div class="pass-list">';
+      map.get(g).forEach(function(f){
         idx++;
-        var no = "TP-" + String(idx).padStart(3, "0");
-        html +=
-          '<a class="pass grain" href="' + encPath(f.path) + '" data-key="' + esc((f.path + " " + titleOf(f.path)).toLowerCase()) + '" style="animation-delay:' + (idx * 90) + 'ms">' +
-            '<span class="pass-edge">Boarding Pass</span>' +
-            '<span class="pass-main">' +
-              '<span class="pass-route"><span class="pass-no">' + no + "</span></span>" +
-              '<span class="pass-title">' + esc(titleOf(f.path)) + "</span>" +
-            "</span>" +
-            '<span class="pass-stub">' +
-              '<span class="barcode"></span>' +
-              '<span class="stub-view">View →</span>' +
-              '<span class="stub-size">' + fmtSize(f.size) + "</span>" +
-            "</span>" +
-          "</a>";
+        var title=f.title||baseTitle(f.path);
+        var e=ext(f.path).replace(".","");
+        var metaBits=[(C.ticketPrefix||"TP")+"-"+String(idx).padStart(3,"0")];
+        html+='<a class="pass grain" href="'+encPath(f.path)+'"'+(e==="pdf"?' target="_blank" rel="noopener"':"")+
+          ' data-key="'+esc((f.path+" "+title+" "+(f.desc||"")).toLowerCase())+'"'+
+          ' style="animation-delay:'+Math.min(idx*70,700)+'ms">'+
+          '<span class="pass-edge">'+esc(C.edge)+"</span>"+
+          '<span class="pass-main">'+
+            '<span class="pass-route"><span class="pass-no">'+esc(metaBits[0])+"</span>"+
+              (f.date?"<span>"+esc(f.date)+"</span>":"")+
+              (e&&e!=="html"?"<span>"+esc(e)+"</span>":"")+"</span>"+
+            '<span class="pass-title">'+esc(title)+"</span>"+
+            (f.desc?'<span class="pass-sub">'+esc(f.desc)+"</span>":"")+
+          "</span>"+
+          '<span class="pass-stub"><span class="barcode"></span><span class="stub-view">View →</span>'+
+            '<span class="stub-size">'+esc(fmtSize(f.size))+"</span></span>"+
+        "</a>";
       });
-      html += "</div>";
+      html+="</div>";
     });
-    if (!total) {
-      html = '<div class="status">暂无行程页面 — push 一个 <span class="accent">.html</span> 即可登机 ✈</div>';
-    }
-    app.innerHTML = html;
+    app.innerHTML=html;
   }
 
-  /* ---- search filter ---- */
-  $("q").addEventListener("input", function () {
-    var q = this.value.trim().toLowerCase();
-    var passes = app.querySelectorAll(".pass");
-    passes.forEach(function (p) {
-      p.style.display = !q || p.dataset.key.indexOf(q) !== -1 ? "" : "none";
-    });
-    app.querySelectorAll(".gate").forEach(function (g) {
-      var list = g.nextElementSibling;
-      var visible = list && list.querySelector('.pass:not([style*="display: none"])');
-      g.style.display = visible ? "" : "none";
-      if (list) list.style.display = visible ? "" : "none";
-    });
+  $("q").addEventListener("input",function(){
+    var q=this.value.trim().toLowerCase();
+    app.querySelectorAll(".pass").forEach(function(p){
+      p.style.display=!q||p.dataset.key.indexOf(q)!==-1?"":"none";});
+    app.querySelectorAll(".gate").forEach(function(g){
+      var list=g.nextElementSibling;
+      var vis=list&&list.querySelector('.pass:not([style*="display: none"])');
+      g.style.display=vis?"":"none"; if(list) list.style.display=vis?"":"none";});
   });
 
-  /* ---- load from GitHub API ---- */
-  var R = detectRepo();
-  var API = "https://api.github.com/repos/" + R.owner + "/" + R.repo;
-  $("metaRepo").textContent = R.owner + "/" + R.repo;
-  $("repoLink").href = "https://github.com/" + R.owner + "/" + R.repo;
-
-  function getJSON(url) {
-    return fetch(url).then(function (r) {
-      if (!r.ok) throw new Error("HTTP " + r.status + (r.status === 403 ? " (API 限流，稍后再试)" : ""));
-      return r.json();
-    });
+  /* ---- sources ---- */
+  function getJSON(url){
+    return fetch(url,{cache:"no-cache"}).then(function(r){
+      if(!r.ok) throw new Error("HTTP "+r.status+(r.status===403?" (API 限流)":""));
+      return r.json();});
+  }
+  function detectGitHub(){
+    var g=S.github||{};
+    if(g.owner&&g.repo) return {owner:g.owner,repo:g.repo,branch:g.branch||""};
+    var m=location.hostname.match(/^([^.]+)\.github\.io$/i);
+    if(m){
+      var seg=location.pathname.split("/").filter(Boolean);
+      return {owner:m[1],repo:seg.length?decodeURIComponent(seg[0]):m[1]+".github.io",branch:g.branch||""};
+    }
+    return null;
+  }
+  function done(items,label,updated,repoUrl){
+    $("metaRepo").textContent=label||"—";
+    if(updated) $("metaPush").textContent=updated;
+    $("metaStatus").innerHTML='<b class="ok">ON TIME</b>';
+    if(repoUrl||SITE.repoLink) $("repoLink").href=SITE.repoLink||repoUrl;
+    else $("repoLink").style.display="none";
+    render(items);
+  }
+  function fail(msg){
+    $("metaStatus").innerHTML='<b class="bad">DELAYED</b>';
+    statusLine(esc(C.error||"Error")+" — "+esc(msg)+
+      '<br><span class="accent">先试 manifest.json，再试 GitHub API，最后用 SITE.source.items</span>');
   }
 
-  getJSON(API)
-    .then(function (info) {
-      if (info.pushed_at) $("metaPush").textContent = info.pushed_at.slice(0, 10);
-      return getJSON(API + "/git/trees/" + encodeURIComponent(info.default_branch) + "?recursive=1");
-    })
-    .then(function (tree) {
-      var files = (tree.tree || []).filter(function (n) {
-        return n.type === "blob" &&
-          /\.html?$/i.test(n.path) &&
-          n.path.toLowerCase() !== "index.html";
-      });
-      files.sort(function (a, b) { return a.path.localeCompare(b.path, "zh"); });
-
-      /* group by top-level directory; root files first */
-      var map = new Map();
-      files.forEach(function (f) {
-        var dir = f.path.indexOf("/") !== -1 ? f.path.split("/")[0] : null;
-        if (!map.has(dir)) map.set(dir, []);
-        map.get(dir).push(f);
-      });
-      var groups = [];
-      if (map.has(null)) groups.push({ name: null, files: map.get(null) });
-      Array.from(map.keys()).filter(function (k) { return k !== null; }).sort()
-        .forEach(function (k) { groups.push({ name: k, files: map.get(k) }); });
-
-      $("metaCount").textContent = String(files.length);
-      $("metaStatus").innerHTML = '<b class="ok">ON TIME</b>';
-      render(groups, files.length);
-    })
-    .catch(function (err) {
-      $("metaStatus").innerHTML = '<b class="bad">DELAYED</b>';
-      statusLine('信号中断 — ' + esc(err.message) + '<br><span class="accent">刷新重试，或检查仓库是否为 public</span>');
+  function fromManifest(){
+    return getJSON(S.manifest||"manifest.json").then(function(m){
+      var items=m.items||m.pages||[];
+      if(!items.length) throw new Error("manifest 里没有 items");
+      done(items,(m.site&&m.site.name)||"manifest",m.generated||"",(m.site&&m.site.url)||"");
+      return true;
     });
+  }
+  function fromGitHub(){
+    var R=detectGitHub();
+    if(!R) return Promise.reject(new Error("未配置 GitHub 仓库"));
+    var API="https://api.github.com/repos/"+R.owner+"/"+R.repo;
+    return getJSON(API).then(function(info){
+      var br=R.branch||info.default_branch;
+      return getJSON(API+"/git/trees/"+encodeURIComponent(br)+"?recursive=1").then(function(tree){
+        var items=(tree.tree||[]).filter(function(n){return n.type==="blob";})
+          .map(function(n){return {path:n.path,size:n.size};});
+        done(items,R.owner+"/"+R.repo,(info.pushed_at||"").slice(0,10),"https://github.com/"+R.owner+"/"+R.repo);
+        return true;
+      });
+    });
+  }
+  function fromInline(){
+    var items=S.items||[];
+    if(!items.length) return Promise.reject(new Error("SITE.source.items 为空"));
+    done(items,"static","", "");
+    return Promise.resolve(true);
+  }
+
+  var mode=S.mode||"auto";
+  var chain = mode==="manifest" ? [fromManifest]
+            : mode==="github"   ? [fromGitHub]
+            : mode==="inline"   ? [fromInline]
+            :                     [fromManifest,fromGitHub,fromInline];
+  (function run(i,lastErr){
+    if(i>=chain.length) return fail(lastErr?lastErr.message:"没有可用数据源");
+    chain[i]().catch(function(e){run(i+1,e);});
+  })(0,null);
 })();
 </script>
 </body>
