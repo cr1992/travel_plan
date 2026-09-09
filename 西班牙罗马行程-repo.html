@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>西班牙 + 罗马 · 13 天行程</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  /* ============ HOUSE STYLE — Claude warm-cream + clay-coral (do not drift) ============ */
+  :root{
+    --bg:#FDFDFC; --card:#FFFFFF; --kraft:#ECE5D5;
+    --clay:#D97757; --clay-deep:#BD5A39;
+    --ink:#1F1E1D; --ink-2:#3B3A36; --ink-soft:#615C53; --ink-faint:#928C81;
+    --line:rgba(31,30,29,.12); --line-2:rgba(31,30,29,.2); --dark:#26241F;
+    --shadow:0 12px 32px -16px rgba(61,55,45,.45);
+    --serif:"Noto Serif SC","Songti SC","STSong",Georgia,serif; --sans:"Noto Sans SC",-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; --disp:"Fraunces",Georgia,"Songti SC","Noto Serif SC",serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bg);font-size:16.5px;line-height:1.72;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");}
+  .wrap{position:relative;z-index:1;max-width:520px;margin:0 auto;}
+  .hero{position:relative;padding:58px 26px 34px;overflow:hidden;background:radial-gradient(120% 80% at 88% 4%, rgba(217,119,87,.16) 0%, rgba(217,119,87,0) 55%),var(--bg);}
+  .kicker{font-family:var(--disp);font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--clay-deep);font-weight:600;margin-bottom:16px;}
+  .hero h1{font-family:var(--serif);font-weight:700;font-size:2.7rem;line-height:1.16;color:var(--ink);}
+  .hero h1 span{color:var(--clay);}
+  .rule{width:48px;height:4px;background:var(--clay);border-radius:4px;margin:18px 0 16px;}
+  .tag-line{font-size:.98rem;color:var(--ink-2);font-weight:500;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+  .chip{display:inline-flex;align-items:center;gap:5px;background:var(--card);border:1px solid var(--line-2);border-radius:30px;padding:6px 13px;font-size:.84rem;color:var(--ink-2);font-weight:500;box-shadow:0 2px 8px -6px rgba(61,55,45,.4);}
+  .chip b{color:var(--ink);font-family:var(--disp);font-weight:600;}
+  .chip.lead{background:var(--clay);border-color:var(--clay);color:#fff;}
+  .chip.lead b{color:#fff;}
+  .info{margin:18px 18px 0;background:var(--card);border-radius:18px;box-shadow:var(--shadow);border:1px solid var(--line);overflow:hidden;}
+  .info .row{display:flex;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line);font-size:.92rem;color:var(--ink-2);}
+  .info .row:last-child{border-bottom:0;}
+  .info .ic{flex:0 0 24px;font-size:1.1rem;line-height:1.45;}
+  .info .row b{color:var(--ink);font-weight:700;}
+  .info .tip{background:rgba(217,119,87,.09);}
+  .info .tip b{color:var(--clay-deep);}
+  .daynav{position:sticky;top:0;z-index:20;display:flex;gap:7px;padding:12px 14px;margin-top:24px;background:rgba(253,253,252,.9);backdrop-filter:blur(10px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .daynav::-webkit-scrollbar{display:none;}
+  .daynav a{flex:0 0 auto;white-space:nowrap;text-align:center;text-decoration:none;font-weight:500;font-size:.82rem;color:var(--ink-2);padding:8px 12px;border-radius:11px;border:1px solid var(--line-2);transition:all .25s ease;}
+  .daynav a .d{font-family:var(--disp);font-weight:600;font-size:.98rem;margin-right:4px;color:var(--clay-deep);}
+  .daynav a.on,.daynav a:active{background:var(--clay);color:#fff;border-color:var(--clay);}
+  .daynav a.on .d,.daynav a:active .d{color:#fff;}
+  .day{padding:34px 22px 8px;scroll-margin-top:64px;}
+  .day-head{margin-bottom:22px;}
+  .day-num{font-family:var(--disp);font-weight:600;font-size:3.4rem;line-height:.9;color:var(--clay);display:flex;align-items:baseline;gap:10px;}
+  .day-num span{font-family:var(--disp);font-size:1rem;color:var(--ink-faint);font-weight:500;letter-spacing:.04em;}
+  .day-title{font-family:var(--serif);font-weight:700;font-size:1.34rem;margin-top:10px;color:var(--ink);}
+  .day-note{font-size:.92rem;color:var(--ink-soft);margin-top:7px;}
+  .entry{display:grid;grid-template-columns:50px 20px 1fr;gap:10px;position:relative;padding-bottom:22px;}
+  .entry .time{font-family:var(--disp);font-weight:600;font-size:.94rem;color:var(--clay-deep);text-align:right;padding-top:1px;white-space:nowrap;}
+  .entry .mk{position:relative;}
+  .entry .mk .dot{width:12px;height:12px;border-radius:50%;background:var(--clay);border:2.5px solid var(--bg);box-shadow:0 0 0 1px var(--clay);margin:6px auto 0;position:relative;z-index:2;}
+  .entry .mk::before{content:"";position:absolute;left:50%;top:6px;bottom:-22px;width:2px;transform:translateX(-50%);background:var(--line-2);}
+  .entry:last-child .mk::before{display:none;}
+  .entry .ttl{font-family:var(--serif);font-weight:500;font-size:1.1rem;color:var(--ink);line-height:1.45;}
+  .entry .desc{font-size:.9rem;color:var(--ink-soft);margin-top:3px;}
+  .entry .desc b{color:var(--ink-2);font-weight:700;}
+  .tag{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 10px;border-radius:20px;margin-bottom:6px;letter-spacing:.02em;}
+  .t-coffee{background:#EBDDC6;color:#8A5A1C;} .t-food{background:#F4DBD0;color:#B14B2C;}
+  .t-see{background:#DCE6D6;color:#4C6A42;} .t-shop{background:#E6DFEC;color:#67478F;}
+  .t-zoo{background:#E2E8D1;color:#566F24;} .t-air{background:#DCE6EE;color:#33597F;}
+  .t-bag{background:#E9E2D5;color:#6A6056;}
+  .nav-btn{display:inline-flex;align-items:center;gap:5px;margin-top:10px;text-decoration:none;font-weight:500;font-size:.82rem;color:var(--clay-deep);background:var(--card);border:1px solid var(--line-2);border-radius:30px;padding:7px 14px;transition:all .2s ease;}
+  .nav-btn:active{background:var(--clay);color:#fff;border-color:var(--clay);}
+  .sub{margin-top:10px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:12px 15px;}
+  .sub li{list-style:none;font-size:.88rem;color:var(--ink-soft);padding:6px 0 6px 18px;position:relative;border-bottom:1px dashed var(--line);}
+  .sub li:last-child{border-bottom:0;}
+  .sub li::before{content:"";position:absolute;left:2px;top:14px;width:6px;height:6px;border-radius:50%;background:var(--clay);}
+  .sub li b{color:var(--ink);font-weight:700;}
+  .opt{margin:2px 0 22px 80px;background:var(--kraft);border:1.5px dashed var(--clay);border-radius:14px;padding:14px 16px;}
+  .opt .lbl{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:700;letter-spacing:.06em;color:var(--clay-deep);text-transform:uppercase;margin-bottom:6px;}
+  .opt .ot{font-family:var(--serif);font-weight:500;font-size:1rem;color:var(--ink);}
+  .opt .ot b{color:var(--clay-deep);}
+  .opt .od{font-size:.86rem;color:var(--ink-soft);margin-top:4px;}
+  .check{margin:18px 18px 0;background:var(--dark);color:#EDE8DD;border-radius:18px;padding:26px 22px;}
+  .check h3{font-family:var(--serif);font-weight:700;font-size:1.24rem;color:#FFFBF2;margin-bottom:4px;}
+  .check .cs{font-size:.84rem;color:#B7AE9D;margin-bottom:16px;}
+  .check ul{list-style:none;}
+  .check li{display:flex;gap:12px;font-size:.92rem;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .check li:last-child{border-bottom:0;}
+  .check li .n{font-family:var(--disp);font-weight:600;color:var(--clay);flex:0 0 18px;}
+  .check li b{color:#fff;font-weight:700;}
+  footer{padding:26px 24px 46px;text-align:center;font-size:.78rem;color:var(--ink-faint);line-height:1.6;}
+  footer .h{font-family:var(--disp);font-style:italic;color:var(--clay-deep);font-size:.95rem;}
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+  .rv.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<script>
+const TRIP = {
+  kicker: "Spain · Rome · 9/27 – 10/10",
+  h1: ["巴塞罗那", "一路向南", "到罗马"],
+  tagline: "高迪 · 摩尔宫殿 · 弗拉门戈 · 罗马收尾",
+  chips: [
+    { text: "<b>9/27 – 10/10</b> · 13 天" },
+    { text: "🚄 4 城 + 罗马" },
+    { text: "🕌 核心 · 阿尔罕布拉宫 10/3 早场", lead: true }
+  ],
+  info: [
+    { ic: "✈️", html: "去程 <b>9/27 01:50 浦东</b> → 马赛转机 → <b>13:10 抵巴塞罗那</b>　回程 <b>10/9 21:30 罗马</b> → 维也纳转机 → <b>10/10 06:00 浦东</b>" },
+    { ic: "🏨", html: "巴塞罗那 民宿（波盖利亚市场旁）· 科尔多瓦 旅馆（清真寺南侧）· 格拉纳达 / 塞维利亚 / 罗马 待定 —— <b>门牌地址只放在随身 PDF 里</b>" },
+    { ic: "🚄", html: "三段城际都是 Renfe 高铁，<b>AVE 上车前要过安检</b>，提前 30 分钟到站；越早买越便宜" },
+    { ic: "🛂", html: "中转马赛 = <b>申根入境在马赛做</b>，EES 已全面启用，首次入境要采指纹＋人脸；BCN 那段属申根内航段，落地不再过关" },
+    { ic: "💡", tip: true, html: "<b>阿尔罕布拉宫官网只放 3 个月内的票，10/3 现在已开售</b>，9–10 月是全年次高峰，纳斯里德宫殿早场最先卖光——这一项今天就订" }
+  ],
+  days: [
+    { n: 1, date: "9/27 · 周日", nav: "落地", title: "落地巴塞罗那 · 哥特区 · 海边日落",
+      note: "跨洲飞行＋中转，今天不排硬景点。波盖利亚市场周日闭市，已挪到明早；大教堂周日只开下午两个半小时，正好卡在今天。",
+      items: [
+        { time:"08:50", tag:"✈️ 机场", cls:"air", title:"马赛 MRS 中转 · 在这里入申根", desc:"下机直奔边检，不要先逛免税店。",
+          sub:["<b>EES 首次入境</b>：采指纹 + 人脸，排队可能比以前久","<b>MRS→BCN 是申根内航段</b>，巴塞罗那落地不再过关","值机时确认<b>行李是否直挂 BCN</b>，没直挂就要在马赛提取重新托运"],
+          map:"Aéroport Marseille Provence" },
+        { time:"13:10", tag:"✈️ 机场", cls:"air", title:"抵达 BCN 机场 → 市区", desc:"Aerobús A1 直达加泰罗尼亚广场约 35 分钟；拖箱子怕麻烦就打车约 €35。", map:"Aeroport Josep Tarradellas Barcelona-El Prat" },
+        { time:"14:30", tag:"🧳 行李", cls:"bag", title:"民宿放行李", desc:"出门 100 米就是波盖利亚市场和兰布拉大道。", map:"Mercat de la Boqueria" },
+        { time:"15:00", tag:"🏛 景点", cls:"see", title:"巴塞罗那大教堂", desc:"周日仅 <b>14:00–16:30</b> 开放——整趟行程里唯一不用改期的窗口。回廊里养着 13 只白鹅。", map:"Catedral de Barcelona" },
+        { time:"16:15", tag:"🏛 景点", cls:"see", title:"哥特区 + 兰布拉大道慢走", desc:"国王广场、圣费利佩内里广场；兰布拉是全城扒手最密集的一段，包背前面。", map:"Barri Gòtic, Barcelona" },
+        { time:"18:00", tag:"☕ 咖啡", cls:"coffee", title:"Satan's Coffee Corner", desc:"哥特区里的精品豆，坐 30 分钟醒神，别睡整下午。", map:"Satan's Coffee Corner, Barcelona" },
+        { time:"19:20", tag:"🏛 景点", cls:"see", title:"巴塞罗内塔海滩 日落", desc:"日落约 <b>19:50</b>，海边风大带件外套。", map:"Platja de la Barceloneta" },
+        { time:"20:40", tag:"🍜 美食", cls:"food", title:"海边海鲜饭晚餐", desc:"第一顿别太重，时差还没倒过来。", map:"La Barceloneta, Barcelona" }
+      ],
+      options: [
+        { title:"太累就把大教堂<b>整段砍掉</b>", desc:"直接放行李→海边→吃饭→睡觉，大教堂挪到 9/29 上午（周二 9:30–17:45）。", map:"Catedral de Barcelona" }
+      ]
+    },
+    { n: 2, date: "9/28 · 周一", nav: "高迪日", title: "高迪与多梅内克 · 现代主义整日",
+      note: "毕加索博物馆周一闭馆，所以今天整天给建筑。圣家堂和圣保罗医院分别在高迪大道两端，步行 10 分钟串起来，是全城最省脚力的一段。",
+      items: [
+        { time:"08:30", tag:"🍜 美食", cls:"food", title:"波盖利亚市场早餐", desc:"周日闭市、周一正常开（8:00–20:30）。伊比利亚火腿、鲜榨果汁、Bar Pinotxo 的吧台早餐。", map:"Mercat de la Boqueria" },
+        { time:"09:50", tag:"🏛 景点", cls:"see", title:"圣家堂", desc:"订 <b>10:00 场</b>，上午东侧诞生立面的彩窗最好看。塔楼要单独加购，恐高可以不上。约 1.5–2 小时。", map:"Basílica de la Sagrada Família" },
+        { time:"12:15", tag:"🏛 景点", cls:"see", title:"圣十字圣保罗医院", desc:"沿高迪大道走 10 分钟。9:30–18:30，人比圣家堂少得多，很多人觉得它比圣家堂更惊喜。", map:"Recinte Modernista de Sant Pau" },
+        { time:"14:00", tag:"🍜 美食", cls:"food", title:"午餐 · 当日套餐 menú del día", desc:"西班牙午餐 14:00 才是正点，工作日套餐性价比最高。", map:"Avinguda de Gaudí, Barcelona" },
+        { time:"16:00", tag:"🏛 景点", cls:"see", title:"巴特略之家", desc:"8:30–22:30。Gold 票含 iPad 的 AR 导览和高迪立方体，是这栋房子最值的部分。约 1.5 小时。", map:"Casa Batlló" },
+        { time:"18:15", tag:"🛍 购物", cls:"shop", title:"格拉西亚大道", desc:"巴特略和米拉之间这段就是主力商业街，顺路逛完不用另跑一趟。", map:"Passeig de Gràcia, Barcelona" },
+        { time:"20:30", tag:"🍜 美食", cls:"food", title:"晚餐", desc:"本地人 21:00 后才吃晚饭，20:30 进店基本不用等位。", map:"Eixample, Barcelona" }
+      ],
+      options: [
+        { title:"米拉之家：与巴特略<b>二选一</b>，或只上夜场屋顶", desc:"9:00–23:00，就在格拉西亚大道再往上走 5 分钟。两栋都进会有点审美疲劳，夜场屋顶的烟囱阵是另一种体验。", map:"La Pedrera - Casa Milà" },
+        { title:"想加桂尔公园 → 放在圣保罗医院之后", desc:"需另订<b>分时段票</b>，从圣保罗医院坐 H6/92 路约 20 分钟，但今天会变得很满。", map:"Park Güell" }
+      ]
+    },
+    { n: 3, date: "9/29 · 周二", nav: "老城", title: "音乐宫 · 毕加索 · 博恩区",
+      note: "都在老城东半边，一天几乎不用坐车。原表写的「毕加索博物馆 16:00 后免费」——那是周四下午和每月第一个周日的规则，你们在巴塞的三天都不沾边，直接买票。",
+      items: [
+        { time:"09:30", tag:"🏛 景点", cls:"see", title:"加泰罗尼亚音乐宫", desc:"<b>只能跟导览进</b>，官网提前订，约 55 分钟。倒挂的彩色玻璃天窗是全欧洲独一份。", map:"Palau de la Música Catalana" },
+        { time:"11:00", tag:"🏛 景点", cls:"see", title:"毕加索博物馆", desc:"周二 9:00–20:00（周一闭馆）。看的是他 14–20 岁的早期作品和整套《宫娥》系列，约 1.5 小时。", map:"Museu Picasso de Barcelona" },
+        { time:"13:00", tag:"🏛 景点", cls:"see", title:"博恩区 + 海上圣母教堂", desc:"《海上大教堂》那座，纯净加泰罗尼亚哥特式，进去免费的时段人少。", map:"Basílica de Santa María del Mar, Barcelona" },
+        { time:"14:00", tag:"🍜 美食", cls:"food", title:"午餐 · Tapas", desc:"博恩区小馆密度最高，随便挑一家有本地人的。", map:"El Born, Barcelona" },
+        { time:"16:00", tag:"☕ 咖啡", cls:"coffee", title:"Nomad Coffee Lab & Shop", desc:"巴塞第三波咖啡的起点，自家烘焙，30 分钟。", map:"Nomad Coffee Lab & Shop, Barcelona" },
+        { time:"17:30", tag:"🧳 行李", cls:"bag", title:"回民宿收行李", desc:"明早 10:30 要退房赶车，今晚先打包好。", map:"Mercat de la Boqueria" },
+        { time:"19:30", tag:"🍜 美食", cls:"food", title:"Porvenir 海鲜晚餐", desc:"表里点名的那家，提前订位。", map:"Porvenir Barcelona" }
+      ],
+      options: [
+        { title:"想再看一眼城市天际线 → <b>卡梅尔碉堡</b>", desc:"免费，360° 俯瞰全城，日落约 19:45，公交上去约 30 分钟。", map:"Bunkers del Carmel, Barcelona" }
+      ]
+    },
+    { n: 4, date: "9/30 · 周三", nav: "南下", title: "巴塞罗那 → 科尔多瓦",
+      note: "5 小时 31 分，是全程最长的一段车。到站已近 17:00，晚上留给罗马桥和老城夜色——这两样恰好都是晚上更好看。",
+      items: [
+        { time:"10:30", tag:"🧳 行李", cls:"bag", title:"退房 → Barcelona Sants", desc:"地铁 L3/L5 直达。<b>AVE 要过安检</b>，提前 30 分钟到站。", map:"Barcelona Sants Estació" },
+        { time:"11:18", tag:"🚄 交通", cls:"air", title:"Barcelona Sants → Córdoba Central", desc:"直达，<b>5h31</b>，16:49 到。车上有餐吧车厢，也可以在 Sants 买好吃的带上车。", map:"Córdoba Central Train Station" },
+        { time:"17:15", tag:"🧳 行李", cls:"bag", title:"入住旅馆", desc:"紧贴清真寺南墙，位置极好。", map:"Mezquita-Catedral de Córdoba" },
+        { time:"18:15", tag:"🏛 景点", cls:"see", title:"罗马桥 + 卡拉奥拉塔", desc:"《权游》渊凯的取景地，24 小时开放免费。<b>日落约 19:55</b>，站桥中间回望清真寺。", map:"Puente Romano de Córdoba" },
+        { time:"21:00", tag:"🍜 美食", cls:"food", title:"安达卢西亚第一顿", desc:"炖牛尾 rabo de toro、冷汤 salmorejo、炸肉卷 flamenquín——科尔多瓦三件套。", map:"Judería de Córdoba" }
+      ],
+      options: [
+        { title:"「科尔多瓦之魂」清真寺<b>夜游</b>——只有今晚能看", desc:"9 月场次是周一至周六 21:00 与 22:30；<b>进入 10 月就改成只有周五、周六</b>，你们 10/1 那天已经看不了。光影秀 + 空场的清真寺，需提前预约。", map:"Mezquita-Catedral de Córdoba" }
+      ]
+    },
+    { n: 5, date: "10/1 · 周四", nav: "科尔多瓦", title: "科尔多瓦全天 · 免费清晨场",
+      note: "清真寺周一至周六 8:30–9:30 免费开放，只接待散客、9:20 开始清场——空场的红白拱门是这趟最值得早起的一次。中午到下午最热，安排午休。",
+      items: [
+        { time:"08:25", tag:"🏛 景点", cls:"see", title:"清真寺-大教堂 · 免费时段", desc:"8:30–9:30，<b>9:20 就开始清人</b>，不接待旅行团。安静、无人、不能拍到爽，但氛围是全天最好的。", map:"Mezquita-Catedral de Córdoba" },
+        { time:"09:40", tag:"☕ 咖啡", cls:"coffee", title:"早餐 · Tostada + café con leche", desc:"番茄蒜香烤面包配橄榄油，安达卢西亚标准早餐。", map:"Plaza de las Tendillas, Córdoba" },
+        { time:"10:15", tag:"🏛 景点", cls:"see", title:"维亚纳宫", desc:"12 座庭院、五个世纪的叠层。<b>周一闭馆，9:00–15:00</b>，今天周四没问题。约 1 小时。", map:"Palacio de Viana, Córdoba" },
+        { time:"12:00", tag:"🏛 景点", cls:"see", title:"基督教国王城堡", desc:"<b>8:15–13:00，务必 12:30 前进门</b>。目前仍在修缮，出发前去官网确认是只开花园还是内部也开。", map:"Alcázar de los Reyes Cristianos, Córdoba" },
+        { time:"13:30", tag:"🍜 美食", cls:"food", title:"午餐", desc:"老城里随便找一家有庭院的，中午躲太阳。", map:"Judería de Córdoba" },
+        { time:"15:30", tag:"🧳 休息", cls:"bag", title:"回酒店午休", desc:"西班牙人这个点也在午休，很多店真的关门。", map:"Mezquita-Catedral de Córdoba" },
+        { time:"17:30", tag:"🏛 景点", cls:"see", title:"犹太区 + 百花巷", desc:"傍晚光线斜进白墙巷子，团队也散了。<b>百花巷白天几乎拍不到空景</b>，这个点是最好的机会。", map:"Calleja de las Flores, Córdoba" },
+        { time:"19:30", tag:"🏛 景点", cls:"see", title:"河岸看日落", desc:"从罗马桥另一侧回看清真寺，和昨天是完全不同的角度。", map:"Puente Romano de Córdoba" },
+        { time:"21:00", tag:"🍜 美食", cls:"food", title:"晚餐 · 街头弗拉门戈", desc:"桥头傍晚常有街头表演，吃完过去听一段。", map:"Puente Romano de Córdoba" }
+      ],
+      options: [
+        { title:"想<b>从容地</b>看清真寺（含登钟楼）", desc:"另买一张 10:00 之后的正式票（约 €15），把维亚纳宫让出来。免费场太赶，只够走一圈。", map:"Mezquita-Catedral de Córdoba" },
+        { title:"麦地那·阿萨哈拉遗址", desc:"城外 8 公里的哈里发王城遗址，半天，需坐接驳巴士。<b>周一闭</b>。愿意舍掉一个市内景点才排得下。", map:"Medina Azahara, Córdoba" }
+      ]
+    },
+    { n: 6, date: "10/2 · 周五", nav: "格拉纳达", title: "科尔多瓦 → 格拉纳达 · 阿尔拜辛日落",
+      note: "原表把阿尔罕布拉宫放在今天——12:35 才到，下午场既紧张又拍不到好光，已整段挪到明早。今天先把山下的教堂和阿尔拜辛走完，傍晚在对面山头看它。",
+      items: [
+        { time:"10:00", tag:"🧳 行李", cls:"bag", title:"退房去车站", desc:"科尔多瓦车站离老城约 15 分钟车程。", map:"Córdoba Central Train Station" },
+        { time:"10:44", tag:"🚄 交通", cls:"air", title:"Córdoba → Granada", desc:"高铁 1h51，12:35 到。", map:"Granada Train Station" },
+        { time:"13:15", tag:"🍜 美食", cls:"food", title:"放行李 + 午餐", desc:"格拉纳达点酒<b>免费送 tapa</b>，是全西班牙唯一还保留这规矩的城市，喝三杯就吃饱了。", map:"Centro, Granada" },
+        { time:"15:00", tag:"🏛 景点", cls:"see", title:"主教座堂 + 皇家礼拜堂", desc:"两座门挨门。皇家礼拜堂 10:00–18:30（周日 11:30 才开），里面是天主教双王的棺椁。", map:"Capilla Real de Granada" },
+        { time:"16:45", tag:"🏛 景点", cls:"see", title:"圣胡安德迪奥斯圣殿", desc:"9:30–18:45。整座教堂内部贴满金箔的巴洛克，被叫作「黄金教堂」，游客却很少。", map:"Basílica de San Juan de Dios, Granada" },
+        { time:"18:15", tag:"🏛 景点", cls:"see", title:"阿尔拜辛白墙巷弄", desc:"一路往上走，坡陡、石板滑，穿好鞋。走不动就在大教堂边坐 C31/C32 小巴上去。", map:"Albaicín, Granada" },
+        { time:"19:15", tag:"🏛 景点", cls:"see", title:"圣尼古拉斯观景台 日落", desc:"<b>日落约 19:50</b>，提前 30 分钟到才占得到墙边位置。正对阿尔罕布拉宫和内华达山脉。", map:"Mirador de San Nicolás, Granada" },
+        { time:"21:30", tag:"🍜 美食", cls:"food", title:"萨克罗蒙特洞穴弗拉门戈", desc:"Cueva de la Rocío，20:00–24:00 场次，含一杯饮料，<b>需预约</b>。吉普赛 zambra 是这里独有的形式。", map:"Cueva de la Rocío, Granada" }
+      ],
+      options: [
+        { title:"阿尔罕布拉宫<b>夜场</b>：只有周五、周六 20:00–21:30", desc:"今晚是这趟唯一的周五。但它和圣尼古拉斯日落＋洞穴弗拉门戈直接冲突，三选一。", map:"Alhambra, Granada" }
+      ]
+    },
+    { n: 7, date: "10/3 · 周六", nav: "阿尔罕布拉", title: "阿尔罕布拉宫 · 一整个上午",
+      note: "全程唯一不能出错的一天。票面时间指的是<b>进纳斯里德宫殿</b>的时间，不是进园时间；从主入口走到宫殿检票口要 15–20 分钟，迟到超过 30 分钟直接不放行、不退票、不改期。",
+      items: [
+        { time:"08:00", tag:"🏛 景点", cls:"see", title:"到主入口取票 / 检票", desc:"票只能<b>本人</b>凭护照原件 + 购票时那张银行卡取。别人代取不行。", map:"Alhambra, Granada" },
+        { time:"08:30", tag:"🏛 景点", cls:"see", title:"纳斯里德宫殿", desc:"订当天<b>最早的时段</b>：赶在大巴团之前，狮子庭院和桃金娘中庭几乎是空的。进去之后想待多久都行。", map:"Palacios Nazaríes, Alhambra" },
+        { time:"10:15", tag:"🏛 景点", cls:"see", title:"阿尔卡萨瓦城堡 + 查理五世宫", desc:"城堡塔顶是全城最好的视野，能一眼看到对面的阿尔拜辛白墙。", map:"Alcazaba de la Alhambra, Granada" },
+        { time:"11:45", tag:"🏛 景点", cls:"see", title:"轩尼洛里菲夏宫 花园", desc:"水渠中庭，10 月玫瑰还在开。走到这里已经是第 3 小时，别硬撑。", map:"Generalife, Granada" },
+        { time:"13:30", tag:"🍜 美食", cls:"food", title:"下山午餐", desc:"雷阿莱霍区（老犹太区）比山上的餐厅便宜一半。", map:"Realejo, Granada" },
+        { time:"15:30", tag:"🧳 休息", cls:"bag", title:"午休", desc:"上午走了 5 公里山路，认真休息两小时。", map:"Centro, Granada" },
+        { time:"18:00", tag:"🏛 景点", cls:"see", title:"雷阿莱霍区 涂鸦漫步", desc:"街头艺术家 El Niño de las Pinturas 的作品散布在这一带，很好逛。", map:"Realejo, Granada" },
+        { time:"20:30", tag:"🍜 美食", cls:"food", title:"晚餐 · 继续 tapas 巡礼", desc:"Calle Navas 一整条街都是 tapas 酒吧。", map:"Calle Navas, Granada" }
+      ],
+      options: [
+        { title:"阿拉伯浴室 Hammam Al Ándalus", desc:"走完阿尔罕布拉之后泡一场，需预约，约 €45 起。下午最好的替代方案。", map:"Hammam Al Ándalus Granada" },
+        { title:"表里提到的<b>格拉纳达斗牛场 / Caleta 电车站雪山街景</b>", desc:"都在城北，坐 LAC 线 10 分钟，各 20 分钟就够，可以塞进傍晚那段。", map:"Plaza de Toros de Granada" }
+      ]
+    },
+    { n: 8, date: "10/4 · 周日", nav: "塞维利亚", title: "格拉纳达 → 塞维利亚 · 广场与夜景",
+      note: "⚠️ 原表这天写的是<b>希布拉法罗城堡和马拉盖塔海滩</b>——那两个在马拉加，不在这条线上，应该是从旧稿复制过来的，已换成塞维利亚的内容。周日大教堂 14:30 才开，所以今天全部安排露天的。",
+      items: [
+        { time:"09:30", tag:"☕ 咖啡", cls:"coffee", title:"退房寄存 + 早餐", desc:"格拉纳达最后一个早上，慢一点。", map:"Centro, Granada" },
+        { time:"12:40", tag:"🚄 交通", cls:"air", title:"Granada → Sevilla", desc:"2h47，15:27 到圣胡斯塔站。", map:"Sevilla Santa Justa" },
+        { time:"16:15", tag:"🧳 行李", cls:"bag", title:"入住 · 建议订在圣十字区", desc:"老城这一片走路能到王宫、大教堂、都市阳伞，省掉每天来回。", map:"Barrio Santa Cruz, Sevilla" },
+        { time:"17:00", tag:"🏛 景点", cls:"see", title:"西班牙广场", desc:"免费、8:00–24:00。<b>金色时段（18:00–19:30）最好看</b>，48 面省份瓷砖长椅可以找找自己去过的城市。运河能划船。", map:"Plaza de España, Sevilla" },
+        { time:"18:45", tag:"🏛 景点", cls:"see", title:"玛丽亚·路易莎公园", desc:"就在广场后面，穿出去往河边走。", map:"Parque de María Luisa, Sevilla" },
+        { time:"19:45", tag:"🏛 景点", cls:"see", title:"黄金塔 · 河岸", desc:"9:30–19:00 可上塔（周日 10:30 开），错过了在河边看夜色也行。", map:"Torre del Oro, Sevilla" },
+        { time:"20:45", tag:"🏛 景点", cls:"see", title:"都市阳伞 Setas 夜景", desc:"开到 23:45。<b>同一张票当天可上两次</b>，如果白天先上过，晚上再刷一次亮灯的。", map:"Setas de Sevilla" },
+        { time:"21:45", tag:"🍜 美食", cls:"food", title:"晚餐 tapas", desc:"菠菜鹰嘴豆、伊比利亚火腿、雪莉酒。", map:"Barrio Santa Cruz, Sevilla" }
+      ],
+      options: [
+        { title:"瓜达尔基维尔河<b>游船</b>", desc:"黄金塔边发船，约 1 小时，日落场最好。", map:"Torre del Oro, Sevilla" }
+      ]
+    },
+    { n: 9, date: "10/5 · 周一", nav: "王宫", title: "塞维利亚王宫 · 大教堂 · 弗拉门戈",
+      note: "全城最挤的两个点排在同一天，靠早场和分时段票错开。王宫和大教堂之间步行 5 分钟。",
+      items: [
+        { time:"09:30", tag:"🏛 景点", cls:"see", title:"塞维利亚王宫", desc:"<b>必须官网预约时段</b>，且入场要<b>护照原件</b>（复印件和手机照片都不认）。少女中庭、大使厅、花园，2–2.5 小时。《权游》多恩的取景地。", map:"Real Alcázar de Sevilla" },
+        { time:"12:15", tag:"🏛 景点", cls:"see", title:"圣十字区", desc:"原犹太区，窄巷、橙树、庭院。中午在这里绕不会晒到。", map:"Barrio Santa Cruz, Sevilla" },
+        { time:"13:30", tag:"🍜 美食", cls:"food", title:"午餐", desc:"", map:"Barrio Santa Cruz, Sevilla" },
+        { time:"15:30", tag:"🧳 休息", cls:"bag", title:"午休", desc:"10 月的塞维利亚下午还有 30℃。", map:"Barrio Santa Cruz, Sevilla" },
+        { time:"17:00", tag:"🏛 景点", cls:"see", title:"塞维利亚大教堂 + 吉拉尔达塔", desc:"周一至周六约 11:00–19:00，<b>最后入场 18:00</b>，钟楼提前 30 分钟停止上行。塔是斜坡不是楼梯，好走。哥伦布墓在里面。", map:"Catedral de Sevilla" },
+        { time:"19:30", tag:"🍜 美食", cls:"food", title:"晚餐", desc:"早点吃，赶演出。", map:"Sevilla Casco Antiguo" },
+        { time:"21:00", tag:"🏛 景点", cls:"see", title:"弗拉门戈演出", desc:"弗拉门戈博物馆的晚场是全城口碑最稳的之一，<b>提前订</b>。和格拉纳达的洞穴 zambra 是两种风格，都看不亏。", map:"Museo del Baile Flamenco, Sevilla" }
+      ],
+      options: [
+        { title:"印度群岛综合档案馆（免费）", desc:"就夹在王宫和大教堂中间，哥伦布的航海档案，20 分钟看完。", map:"Archivo de Indias, Sevilla" }
+      ]
+    },
+    { n: 10, date: "10/6 · 周二", nav: "特里亚纳", title: "斗牛场 · 特里亚纳 · 采购",
+      note: "西班牙最后一整天。明早 5:45 就要出门，今晚务必早收拾、早睡。",
+      items: [
+        { time:"10:00", tag:"🏛 景点", cls:"see", title:"皇家骑士团斗牛场", desc:"9:30–21:00，导览约 1 小时，能走进沙场中央。西班牙仍在使用的最老斗牛场之一。", map:"Plaza de Toros de la Real Maestranza, Sevilla" },
+        { time:"11:30", tag:"🏛 景点", cls:"see", title:"弗拉门戈舞蹈博物馆", desc:"10:00–18:00。昨晚看过演出，白天再看展会更有感觉。", map:"Museo del Baile Flamenco, Sevilla" },
+        { time:"13:00", tag:"🍜 美食", cls:"food", title:"特里亚纳市场午餐", desc:"过特里亚纳桥，市场里就是海鲜吧台。", map:"Mercado de Triana, Sevilla" },
+        { time:"15:00", tag:"🛍 购物", cls:"shop", title:"特里亚纳 陶瓷街", desc:"Calle Alfarería 一带的手绘瓷砖，是这趟最合适的伴手礼——轻、不怕摔的用泡沫包好。", map:"Calle Alfarería, Sevilla" },
+        { time:"17:00", tag:"🛍 购物", cls:"shop", title:"市中心采购", desc:"Sierpes 街 + El Corte Inglés（Plaza del Duque 店比 Nervión 店离老城近）。<b>退税单在这里办掉</b>，明早机场没时间。", map:"Calle Sierpes, Sevilla" },
+        { time:"19:30", tag:"🍜 美食", cls:"food", title:"西班牙最后一顿", desc:"", map:"Barrio Santa Cruz, Sevilla" },
+        { time:"21:00", tag:"🧳 行李", cls:"bag", title:"收行李 · 早睡", desc:"明早 05:45 出门。叫好车 / 确认机场大巴首班。", map:"Barrio Santa Cruz, Sevilla" }
+      ],
+      options: [
+        { title:"一定要去<b>龙达</b>的话，只能换掉今天", desc:"大巴单程约 2 小时，新桥＋悬崖观景约 3 小时，来回一整天。代价是斗牛场、特里亚纳、采购全部取消，而且晚上还要赶早睡。<b>不建议</b>——龙达更适合从马拉加或作为独立一天安排。", map:"Puente Nuevo, Ronda" }
+      ]
+    },
+    { n: 11, date: "10/7 · 周三", nav: "飞罗马", title: "塞维利亚 → 罗马 · 老城区半日",
+      note: "两个航班里选 <b>8:05 那班</b>：便宜 ¥86，还多出半天罗马。代价是 5:45 出门。11:20 那班经马德里中转、17:25 才到，等于白丢一天。",
+      items: [
+        { time:"05:45", tag:"🧳 行李", cls:"bag", title:"退房 → SVQ 机场", desc:"出租约 20 分钟 €25 左右；EA 机场大巴从 Santa Justa 站发，首班要提前查。", map:"Aeropuerto de Sevilla" },
+        { time:"08:05", tag:"✈️ 机场", cls:"air", title:"SVQ → 罗马 FCO", desc:"2h40，<b>申根内航段，落地不过关</b>，含托运行李。", map:"Aeroporto di Roma Fiumicino" },
+        { time:"11:15", tag:"✈️ 机场", cls:"air", title:"Leonardo Express → Termini", desc:"32 分钟直达，约 €14，每 15 分钟一班。别在机场排出租。", map:"Roma Termini" },
+        { time:"12:30", tag:"🧳 行李", cls:"bag", title:"酒店放行李", desc:"建议订在 Termini–万神殿之间，两天都好走。", map:"Pantheon, Roma" },
+        { time:"13:00", tag:"🍜 美食", cls:"food", title:"午餐 · 罗马第一顿", desc:"cacio e pepe 或 carbonara，罗马四大意面认准这两样。", map:"Piazza della Rotonda, Roma" },
+        { time:"14:30", tag:"🏛 景点", cls:"see", title:"万神殿", desc:"9:00–19:00，€5 需预约。正午前后阳光从穹顶圆孔打下来最好看，下午也有。", map:"Pantheon, Roma" },
+        { time:"15:45", tag:"🏛 景点", cls:"see", title:"纳沃纳广场", desc:"贝尔尼尼的四河喷泉，形状是古罗马赛场留下来的。", map:"Piazza Navona, Roma" },
+        { time:"16:45", tag:"🏛 景点", cls:"see", title:"特莱维喷泉 + 西班牙阶梯", desc:"两处步行 10 分钟，傍晚人最多但打灯后最好看。", map:"Fontana di Trevi, Roma" },
+        { time:"19:30", tag:"🍜 美食", cls:"food", title:"特拉斯提弗列晚餐", desc:"河对岸的老城区，罗马晚上最有生活气的一片。", map:"Trastevere, Roma" }
+      ],
+      options: [
+        { title:"圣天使堡：<b>周三开到 23:30</b>，其他日子 19:30 就关、周一闭馆", desc:"也就是说今晚是这趟唯一能上夜景平台的机会——正对圣彼得大教堂穹顶。", map:"Castel Sant'Angelo, Roma" }
+      ]
+    },
+    { n: 12, date: "10/8 · 周四", nav: "古罗马", title: "斗兽场 · 古罗马广场 · 帕拉蒂尼山",
+      note: "三个点是同一张联票、24 小时内有效，全部集中在一片，走路串完。上午最凉快，遮阴几乎没有。",
+      items: [
+        { time:"08:30", tag:"🏛 景点", cls:"see", title:"斗兽场", desc:"<b>预约分时段票</b>，订最早场。想进竞技场地面层或地下层要单独加购。约 1.5 小时。", map:"Colosseo, Roma" },
+        { time:"10:30", tag:"🏛 景点", cls:"see", title:"古罗马广场 + 帕拉蒂尼山", desc:"同一张票，出斗兽场步行 3 分钟。先上帕拉蒂尼山俯瞰整个广场，再下去走。", map:"Foro Romano, Roma" },
+        { time:"13:00", tag:"🍜 美食", cls:"food", title:"午餐", desc:"避开斗兽场正门那一圈，往 Monti 区走两条街价格差一半。", map:"Rione Monti, Roma" },
+        { time:"15:00", tag:"🏛 景点", cls:"see", title:"卡比托利欧广场 + 威尼斯广场", desc:"米开朗基罗设计的广场；旁边「大打字机」的屋顶观景台能俯瞰整条帝国广场大道。", map:"Piazza del Campidoglio, Roma" },
+        { time:"17:00", tag:"🧳 休息", cls:"bag", title:"回酒店休息", desc:"", map:"Roma Termini" },
+        { time:"19:30", tag:"🍜 美食", cls:"food", title:"晚餐 · 犹太区或 Testaccio", desc:"犹太区的炸洋蓟 carciofi alla giudia 是罗马独有的。", map:"Ghetto Ebraico, Roma" }
+      ],
+      options: [
+        { title:"博尔盖塞美术馆", desc:"贝尔尼尼雕塑的巅峰。<b>必须提前订固定 2 小时时段</b>，常常一周前就满。", map:"Galleria Borghese, Roma" },
+        { title:"图拉真市场 / 马西莫竞技场日落", desc:"都在同一片，体力有余再加。", map:"Mercati di Traiano, Roma" }
+      ]
+    },
+    { n: 13, date: "10/9 · 周五", nav: "梵蒂冈·返程", title: "梵蒂冈 · 然后回家",
+      note: "21:30 的国际航班、维也纳中转，<b>18:30 前必须到机场</b>。所以今天只安排上午一件大事，下午留足缓冲。",
+      items: [
+        { time:"08:00", tag:"🏛 景点", cls:"see", title:"梵蒂冈博物馆 + 西斯廷礼拜堂", desc:"<b>周日闭馆，今天周五没问题</b>。订最早场，进门直奔西斯廷再回头看其他馆，能避开整条人流。约 3 小时。着装要求：不露肩、不露膝。", map:"Musei Vaticani, Vaticano" },
+        { time:"11:15", tag:"🏛 景点", cls:"see", title:"圣彼得大教堂", desc:"进堂免费但安检队很长；<b>登穹顶另购票</b>（电梯到一半仍有 320 级窄梯）。同样的着装要求。", map:"Basilica di San Pietro, Vaticano" },
+        { time:"13:15", tag:"🍜 美食", cls:"food", title:"午餐 · Prati 区", desc:"梵蒂冈北边一条街之隔就是本地人吃饭的地方，不是游客价。", map:"Prati, Roma" },
+        { time:"14:45", tag:"🏛 景点", cls:"see", title:"圣天使堡（周三没去的话）", desc:"9:00–19:30，<b>周一闭馆</b>。从圣彼得沿协和大道走过去 10 分钟。", map:"Castel Sant'Angelo, Roma" },
+        { time:"16:15", tag:"🧳 行李", cls:"bag", title:"回酒店取行李", desc:"", map:"Roma Termini" },
+        { time:"17:30", tag:"✈️ 机场", cls:"air", title:"Termini → FCO", desc:"Leonardo Express 32 分钟。留出买票和找站台的时间。", map:"Roma Termini" },
+        { time:"18:30", tag:"✈️ 机场", cls:"air", title:"值机 · 退税 · 安检", desc:"21:30 起飞，维也纳中转，<b>10/10 06:00 落浦东</b>。",
+          sub:["在意大利买的东西<b>退税在 FCO 办</b>，队很长，先办再托运","联程行李确认是否直挂上海","维也纳中转时间较短的话，登机口位置提前看好"],
+          map:"Aeroporto di Roma Fiumicino" }
+      ],
+      options: [
+        { title:"不想再跑景点 → 中午就去机场", desc:"把下午整段砍掉，FCO 的免税区和 Termini 站里的 Mercato Centrale 都够逛，反而不慌。", map:"Aeroporto di Roma Fiumicino" }
+      ]
+    }
+  ],
+  checklist: [
+    "<b>申根签证</b>：按停留天数算主要目的地是西班牙（10 晚 vs 罗马 2 晚），走西班牙签证中心；护照有效期须在离开申根后仍有 <b>≥3 个月</b>",
+    "<b>EES 已于 2026/4/10 全面启用</b>：首次入申根采指纹＋人脸，你们在<b>马赛</b>做，中转 3 小时不算宽裕，下机直奔边检",
+    "<b>今天就订</b>：阿尔罕布拉宫纳斯里德宫殿 10/3 最早场（官网 tickets.alhambra-patronato.es，只放 3 个月内的票，9–10 月是次高峰）",
+    "其余要预约：圣家堂 · 巴特略之家 · 音乐宫导览 · 毕加索博物馆 · 塞维利亚王宫 · 斗兽场 · 梵蒂冈博物馆 · 万神殿 · 两场弗拉门戈",
+    "三段火车提前买：9/30 巴塞→科尔多瓦、10/2 科尔多瓦→格拉纳达、10/4 格拉纳达→塞维利亚",
+    "<b>随身带护照原件</b>：阿尔罕布拉宫取票、塞维利亚王宫入场都强制查验，复印件和手机照片不认",
+    "10 月安达卢西亚白天仍有 28–30℃、早晚 15℃ 左右；石板路和上坡极多，<b>一双走得住的鞋</b>比什么都重要",
+    "西意普遍可拍卡，但洞穴弗拉门戈、小酒吧、市场备一点现金；兰布拉大道和地铁扒手多，包背前面",
+    "把这份行程和证件复印件各存一份离线（PDF 已内嵌字体，飞机上没网也能看）"
+  ],
+  footerH: "Buen viaje · Buon viaggio ☀️ 🍊 💃",
+  footerNote: "所有开放时间以出行当天官网为准。西班牙博物馆周一多闭馆、周日多为半天，出发前请再核一次；科尔多瓦基督教国王城堡仍在修缮，需单独确认。"
+};
+
+/* ---------------- renderer ---------------- */
+const navUrl = m => !m ? null : (/^https?:/.test(m) ? m : "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(m));
+const navName = m => { try { const u=new URL(navUrl(m)); return decodeURIComponent(u.searchParams.get("query")||"").split(/[,，]/)[0]||"地图"; } catch(e){ return "地图"; } };
+
+function render(t){
+  const app=document.getElementById("app");
+  const chips=t.chips.map(c=>`<span class="chip${c.lead?' lead':''}">${c.text}</span>`).join("");
+  const navs=t.days.map(d=>`<a href="#d${d.n}"${d.n===t.days[0].n?' class="on"':''}><span class="d">${d.n}</span>${d.nav||d.title.split("·").pop().trim()}</a>`).join("");
+  const info=t.info.map(r=>`<div class="row${r.tip?' tip':''}"><div class="ic">${r.ic}</div><div>${r.html}</div></div>`).join("");
+
+  const days=t.days.map(d=>{
+    const items=d.items.map((it,i)=>{
+      const navbtn=it.map?`<a class="nav-btn" href="${navUrl(it.map)}" target="_blank" rel="noopener">📍 导航 ${navName(it.map)}</a>`:"";
+      const sub=it.sub?`<ul class="sub">${it.sub.map(s=>`<li>${s}</li>`).join("")}</ul>`:"";
+      return `<div class="entry rv"><div class="time">${it.time||""}</div><div class="mk"><div class="dot"></div></div><div class="content">
+        ${it.tag?`<span class="tag t-${it.cls||'see'}">${it.tag}</span>`:""}
+        <div class="ttl">${it.title}</div>${it.desc?`<div class="desc">${it.desc}</div>`:""}${sub}${navbtn}</div></div>`;
+    }).join("");
+    const opts=(d.options||[]).map(o=>{
+      const nb=o.map?`<a class="nav-btn" href="${navUrl(o.map)}" target="_blank" rel="noopener">📍 导航 ${navName(o.map)}</a>`:"";
+      return `<div class="opt rv"><div class="lbl">◆ 可选 · 自由安排</div><div class="ot">${o.title}</div>${o.desc?`<div class="od">${o.desc}</div>`:""}${nb}</div>`;
+    }).join("");
+    return `<section class="day" id="d${d.n}"><div class="day-head rv"><div class="day-num">${d.n}<span>${d.date||""}</span></div>
+      <div class="day-title">${d.title}</div>${d.note?`<div class="day-note">${d.note}</div>`:""}</div><div class="tl">${items}${opts}</div></section>`;
+  }).join("");
+
+  const check=`<section class="check rv"><h3>出发前 Checklist</h3><div class="cs">出门前逐项过一遍</div><ul>${
+    t.checklist.map((c,i)=>`<li><span class="n">${i+1}</span><div>${c}</div></li>`).join("")}</ul></section>`;
+
+  app.innerHTML=`<header class="hero"><div class="kicker">${t.kicker}</div>
+    <h1>${t.h1[0]}<span>${t.h1[1]}</span><br>${t.h1[2]||""}</h1><div class="rule"></div>
+    <p class="tag-line">${t.tagline}</p><div class="chips">${chips}</div></header>
+    <section class="info rv">${info}</section>
+    <nav class="daynav">${navs}</nav>${days}${check}
+    <footer><div class="h">${t.footerH}</div>${t.footerNote}</footer>`;
+
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{threshold:.12,rootMargin:"0px 0px -8% 0px"});
+  document.querySelectorAll(".rv").forEach(x=>io.observe(x));
+  const links=[...document.querySelectorAll(".daynav a")];
+  const navIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove("on"));const a=links.find(l=>l.getAttribute("href")==="#"+e.target.id);if(a){a.classList.add("on");a.scrollIntoView({block:"nearest",inline:"center",behavior:"smooth"});}}}),{rootMargin:"-45% 0px -50% 0px"});
+  t.days.forEach(d=>{const s=document.getElementById("d"+d.n);if(s)navIO.observe(s);});
+}
+render(TRIP);
+</script>
+</body>
+</html>
