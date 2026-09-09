@@ -125,12 +125,18 @@
    A self-listing index for a folder of static pages. EDIT ONLY `SITE`.
    Field reference: skills/travel-itinerary-kit/references/data-schema.md
 
-   Data sources, tried in order when source.mode === "auto":
-     1. manifest  — fetch SITE.source.manifest (built by scripts/build_manifest.py).
-                    Works on any static host, private repo, no API limit, real <title>s.
-     2. github    — GitHub contents API; auto-detects <user>.github.io/<repo>/,
-                    or set source.github = {owner, repo}. Public repos only, rate-limited.
-     3. inline    — SITE.source.items, hardcoded. The only mode that works over file://.
+   source.mode "auto" (default) splits the two jobs so neither can go stale:
+     - WHICH FILES EXIST comes from the GitHub tree API (auto-detects
+       <user>.github.io/<repo>/, or set source.github = {owner, repo}).
+       Drop a page into the repo and it shows up — nothing to re-run.
+     - TITLES come from manifest.json when it is there (built by
+       scripts/build_manifest.py; real <title>s instead of filenames). A missing,
+       partial or stale manifest costs you a nicer title, never a missing page.
+     No GitHub reachable (private repo, another static host, file://)? It falls back
+     to manifest alone, then to source.items.
+
+   Force one source with mode: "github" | "manifest" | "inline".
+   "inline" is the only mode that works over file:// — see build_manifest.py --inline.
    ===================================================================== */
 const SITE = {
   lang: "zh-CN",
@@ -299,44 +305,63 @@ const SITE = {
       '<br><span class="accent">先试 manifest.json，再试 GitHub API，最后用 SITE.source.items</span>');
   }
 
-  function fromManifest(){
+  function mfFetch(){
     return getJSON(S.manifest||"manifest.json").then(function(m){
       var items=m.items||m.pages||[];
       if(!items.length) throw new Error("manifest 里没有 items");
-      done(items,(m.site&&m.site.name)||"manifest",m.generated||"",(m.site&&m.site.url)||"");
-      return true;
+      return {items:items,label:(m.site&&m.site.name)||"manifest",
+              updated:m.generated||"",url:(m.site&&m.site.url)||""};
     });
   }
-  function fromGitHub(){
+  function ghFetch(){
     var R=detectGitHub();
     if(!R) return Promise.reject(new Error("未配置 GitHub 仓库"));
     var API="https://api.github.com/repos/"+R.owner+"/"+R.repo;
     return getJSON(API).then(function(info){
       var br=R.branch||info.default_branch;
       return getJSON(API+"/git/trees/"+encodeURIComponent(br)+"?recursive=1").then(function(tree){
-        var items=(tree.tree||[]).filter(function(n){return n.type==="blob";})
-          .map(function(n){return {path:n.path,size:n.size};});
-        done(items,R.owner+"/"+R.repo,(info.pushed_at||"").slice(0,10),"https://github.com/"+R.owner+"/"+R.repo);
-        return true;
+        return {items:(tree.tree||[]).filter(function(n){return n.type==="blob";})
+                        .map(function(n){return {path:n.path,size:n.size};}),
+                label:R.owner+"/"+R.repo, updated:(info.pushed_at||"").slice(0,10),
+                url:"https://github.com/"+R.owner+"/"+R.repo};
       });
     });
   }
-  function fromInline(){
+  function inlineFetch(){
     var items=S.items||[];
     if(!items.length) return Promise.reject(new Error("SITE.source.items 为空"));
-    done(items,"static","", "");
-    return Promise.resolve(true);
+    return Promise.resolve({items:items,label:"static",updated:"",url:""});
+  }
+
+  /* auto: GitHub 负责“有哪些文件”（永远新鲜），manifest 只负责补标题。
+     manifest 缺条目或整个拿不到都无所谓 —— 标题退回文件名，列表不会漏。
+     反过来拿不到 GitHub（private 仓 / 别的静态站 / file://）就只用 manifest，再退内联。 */
+  function autoFetch(){
+    var mf=mfFetch().catch(function(){return null;});
+    return ghFetch().then(function(gh){
+      return mf.then(function(m){
+        var byPath={};
+        ((m&&m.items)||[]).forEach(function(it){byPath[it.path]=it;});
+        gh.items=gh.items.map(function(f){
+          var e=byPath[f.path]||{};
+          return {path:f.path, size:f.size!=null?f.size:e.size,
+                  title:e.title, desc:e.desc, group:e.group, date:e.date};
+        });
+        return gh;
+      });
+    }).catch(function(){
+      return mf.then(function(m){ return m||inlineFetch(); });
+    });
   }
 
   var mode=S.mode||"auto";
-  var chain = mode==="manifest" ? [fromManifest]
-            : mode==="github"   ? [fromGitHub]
-            : mode==="inline"   ? [fromInline]
-            :                     [fromManifest,fromGitHub,fromInline];
-  (function run(i,lastErr){
-    if(i>=chain.length) return fail(lastErr?lastErr.message:"没有可用数据源");
-    chain[i]().catch(function(e){run(i+1,e);});
-  })(0,null);
+  var fetcher = mode==="manifest" ? mfFetch
+              : mode==="github"   ? ghFetch
+              : mode==="inline"   ? inlineFetch
+              :                     autoFetch;
+  fetcher()
+    .then(function(r){ done(r.items,r.label,r.updated,r.url); })
+    .catch(function(e){ fail(e&&e.message?e.message:"没有可用数据源"); });
 })();
 </script>
 </body>
