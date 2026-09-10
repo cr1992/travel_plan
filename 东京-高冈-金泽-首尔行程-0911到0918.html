@@ -126,39 +126,40 @@ const TRIP = {
     { n: 1, date: "9/11 · 周五", title: "只是落脚 · 浅草",
       note: "全天都在路上，落地成田已 20:05。香港中转 3 小时 10 分，行李直挂成田，中转不出关、持大陆护照无需过境签。",
       items: [
-        { time:"08:30", tag:"✈️ 机场", cls:"air", title:"杭州萧山 T4 → 香港", desc:"港航 HX129，机型 32S，<b>11:10 到香港 T1</b>，飞行 2 小时 40 分。", map:"https://www.google.com/maps/search/?api=1&query=杭州萧山国际机场T4" },
+        { time:"08:30", tag:"✈️ 机场", cls:"air", title:"杭州萧山 T4 → 香港", desc:"港航 HX129，机型 32S，<b>11:10 到香港 T1</b>，飞行 2 小时 40 分。", map:"https://www.google.com/maps/search/?api=1&query=杭州萧山国际机场&query_place_id=ChIJeZr5cP6TTDQROhcfDB7aCh4" },
         { time:"11:10", tag:"🧳 中转", cls:"bag", title:"香港中转（3 小时 10 分）", desc:"行李已直挂成田，中转不用提取。跟着 Transfer 指示走，不入境香港。",
           sub:["票面写 T2 出发，但港航实际都在 T1 —— <b>以现场屏幕为准</b>","3 小时 10 分很充裕，可以慢慢吃个饭","同一张票、同一家航司，第一段晚点导致误接由港航负责改签"],
-          map:"https://www.google.com/maps/search/?api=1&query=香港国际机场" },
-        { time:"14:20", tag:"✈️ 机场", cls:"air", title:"香港 → 东京成田 T1", desc:"港航 HX630，机型 32G，<b>20:05 落地</b>，飞行 4 小时 45 分。", map:"https://www.google.com/maps/search/?api=1&query=成田国際空港第1ターミナル" },
+          map:"https://www.google.com/maps/search/?api=1&query=香港国际机场&query_place_id=ChIJncZGzPPiAzQRnjaSGIKQ9fk" },
+        { time:"14:20", tag:"✈️ 机场", cls:"air", title:"香港 → 东京成田 T1", desc:"港航 HX630，机型 32G，<b>20:05 落地</b>，飞行 4 小时 45 分。", map:"https://www.google.com/maps/search/?api=1&query=成田国際空港第1ターミナル&query_place_id=ChIJb8n8uwvzImAR-RJHLJTlTdU" },
         { time:"21:00", tag:"🚄 交通", cls:"air", title:"成田 → 浅草（推荐直达不换乘）", desc:"入境加取行李约 45 分钟。<b>成田 Sky Access 线「アクセス特急」直通都营浅草线，0 换乘、约 72 分钟、IC 1,380 日元</b>，拖箱子最省事。",
           sub:["备选：Skyliner 到京成上野再换银座线两站，<b>Skyliner 末班 23:00</b>，余量近 3 小时","晚饭在机场或便利店解决 —— 浅草大多 22 点前打烊","确认酒店前台几点关，到店约 22:30"],
-          map:"https://www.google.com/maps/search/?api=1&query=成田空港駅" },
+          map:"https://www.google.com/maps/search/?api=1&query=成田空港駅&query_place_id=ChIJq5vHFgvzImARBCnzZ0sl-oM" },
         { time:"22:30", tag:"🧳 住宿", cls:"bag", title:"入住 RESOL POSHTEL TOKYO ASAKUSA", desc:"西浅草 2-25-1，女生胶囊房。有女性专用更衣室，免费茶水咖啡制冰，电梯刷卡分层，<b>退房后可寄存行李但当天要取</b> —— 明天正好用得上。",
           sub:["最近车站是银座线<b>田原町</b>，去上野只要两站","今晚确认明天 16:38 上野发车的座位信息","床下能塞下 28 寸箱子"],
           map:"https://www.google.com/maps/search/?api=1&query=RESOL POSHTEL TOKYO ASAKUSA&query_place_id=ChIJ215y0r-OGGAR9VMPUUSzraA" }
       ],
       options: [
-        { title:"如果 HX630 大幅延误", desc:"落地晚于 22:10 就赶不上 Skyliner 末班（成田站 23:00 发）。京成本线普通车更晚仍有，或直接住成田机场旁，次日一早进城 —— 反正 9/12 的车是傍晚 16:38，有整个上午缓冲。", map:"https://www.google.com/maps/search/?api=1&query=成田空港第1ターミナル ホテル" }
+        { title:"如果 HX630 大幅延误", desc:"落地晚于 22:10 就赶不上 Skyliner 末班（成田站 23:00 发）。京成本线普通车更晚仍有，或直接住成田机场旁，次日一早进城 —— 反正 9/12 的车是傍晚 16:38，有整个上午缓冲。", map:"https://www.google.com/maps/search/?api=1&query=成田国際空港第1ターミナル&query_place_id=ChIJb8n8uwvzImAR-RJHLJTlTdU" }
       ]
     },
     { n: 2, date: "9/12 · 周六", title: "浅草半天 · 傍晚去高冈",
-      note: "新干线是傍晚 16:38 从<b>上野</b>发车（不是东京站），所以整个白天都在浅草。酒店门口就是浅草寺和合羽桥，不用跑远。",
+      note: "新干线是傍晚 16:38 从<b>上野</b>发车（不是东京站），所以整个白天都在浅草。酒店门口就是浅草寺，不用跑远。",
       items: [
         { time:"09:00", tag:"🧳 行李", cls:"bag", title:"退房 · 行李寄前台", desc:"箱子放酒店，轻装逛半天，下午回来取。<b>务必当天取走</b>。", map:"https://www.google.com/maps/search/?api=1&query=RESOL POSHTEL TOKYO ASAKUSA&query_place_id=ChIJ215y0r-OGGAR9VMPUUSzraA" },
-        { time:"09:20", tag:"🏛 景点", cls:"see", title:"浅草寺 · 仲见世", desc:"步行 10 分钟就到。早上九点多人还不算多，雷门、仲见世、本堂一圈约一小时。", map:"https://www.google.com/maps/search/?api=1&query=浅草寺" },
-        { time:"10:40", tag:"🛍 购物", cls:"shop", title:"合羽桥道具街", desc:"就在西浅草，酒店走过去几分钟。整条街的厨具、刀具、食品samples，逛起来很上头。<b>刀具记得放托运</b>。", map:"https://www.google.com/maps/search/?api=1&query=かっぱ橋道具街" },
-        { time:"12:00", tag:"🍜 美食", cls:"food", title:"浅草午饭", desc:"天妇罗、鳗鱼饭、老洋食店，浅草这一带密度很高。也可以顺手买点车上吃的。", map:"https://www.google.com/maps/search/?api=1&query=浅草 東京" },
-        { time:"13:30", tag:"🏛 景点", cls:"see", title:"晴空塔 或 藏前", desc:"晴空塔从浅草走过去约 20 分钟（隅田川对岸）；不想爬高就去藏前逛咖啡和皮具小店，更安静。二选一，别都去。", map:"https://www.google.com/maps/search/?api=1&query=東京スカイツリー" },
-        { time:"15:40", tag:"🧳 行李", cls:"bag", title:"回酒店取行李 → 上野", desc:"银座线 田原町或浅草站 → 上野，约 5 分钟。<b>留足 40 分钟</b>，上野站新干线闸口要找一下。", map:"https://www.google.com/maps/search/?api=1&query=上野駅" },
-        { time:"16:38", tag:"🚄 交通", cls:"air", title:"Hakutaka 571 上野 → 新高冈", desc:"<b>19:21 到新高冈</b>，约 2 小时 43 分。已出票。上野站上车，别跑去东京站。车上吃驿便当正好。", map:"https://www.google.com/maps/search/?api=1&query=上野駅" },
+        { time:"09:20", tag:"🏛 景点", cls:"see", title:"浅草寺 · 仲见世", desc:"步行 10 分钟就到。早上九点多人还不算多，雷门、仲见世、本堂一圈约一小时。", map:"https://www.google.com/maps/search/?api=1&query=浅草寺&query_place_id=ChIJ8T1GpMGOGGARDYGSgpooDWw" },
+        { time:"11:00", tag:"🏛 景点", cls:"see", title:"东京晴空塔", desc:"从浅草走过隅田川约 20 分钟。<b>周六 9:00 开门</b>（平日 10:00）。不想上塔就在底下的商场逛逛。", map:"https://www.google.com/maps/search/?api=1&query=東京スカイツリー&query_place_id=ChIJ35ov0dCOGGARKvdDH7NPHX0" },
+        { time:"13:00", tag:"🍜 美食", cls:"food", title:"浅草午饭", desc:"天妇罗、鳗鱼饭、老洋食店，浅草这一带密度很高。", map:"https://www.google.com/maps/search/?api=1&query=浅草寺&query_place_id=ChIJ8T1GpMGOGGARDYGSgpooDWw" },
+        { time:"14:20", tag:"☕ 咖啡", cls:"coffee", title:"藏前散步", desc:"浅草往南一站，咖啡馆和皮具小店集中，比浅草安静得多。走累了就在这儿坐着等发车。", map:"https://www.google.com/maps/search/?api=1&query=蔵前 台東区" },
+        { time:"15:30", tag:"🧳 行李", cls:"bag", title:"回酒店取行李", desc:"箱子当天必须取走，取完直接走人。", map:"https://www.google.com/maps/search/?api=1&query=RESOL POSHTEL TOKYO ASAKUSA&query_place_id=ChIJ215y0r-OGGAR9VMPUUSzraA" },
+        { time:"15:55", tag:"🍜 美食", cls:"food", title:"上野 · 阿美横丁买驿便当", desc:"银座线 田原町或浅草站 → 上野约 5 分钟。上野站构内有駅弁屋，<b>北陆新干线上没有餐车</b>，上车前买好。阿美横丁就在站边，还能补点零食。", map:"https://www.google.com/maps/search/?api=1&query=アメヤ横丁&query_place_id=ChIJh7eDrwCPGGARCs9fpCkKS2U" },
+        { time:"16:38", tag:"🚄 交通", cls:"air", title:"Hakutaka 571 上野 → 新高冈", desc:"<b>19:21 到新高冈</b>，约 2 小时 43 分。已出票。上野站上车，别跑去东京站。车上吃驿便当正好。", map:"https://www.google.com/maps/search/?api=1&query=上野駅&query_place_id=ChIJCwbTk56OGGARRJJPe22ziWw" },
         { time:"19:50", tag:"🧳 住宿", cls:"bag", title:"入住 SEKAI HOTEL 高冈", desc:"末広町 40。新高冈下车坐城端线 3 分钟到高冈站，再走过去。<b>最晚入住 22:00</b>，19:21 到完全来得及。带浴缸的单人房，住三晚。",
           sub:["App 里名字译成「高山」，但地址在<b>富山县高冈市</b>，别被译名带偏","前台会发一张熟客卡，拿去周边小店有互动","到得晚，晚饭大概率是便利店或站前拉面"],
           map:"https://www.google.com/maps/search/?api=1&query=SEKAI HOTEL Takaoka&query_place_id=ChIJCdFHqZyD918R8iLGLt26ihw" }
       ],
       options: [
-        { title:"想睡个懒觉的版本", desc:"浅草寺 + 合羽桥 + 午饭就够半天了，下午回酒店休息到三点再走。昨晚落地已经很晚，第一个整天不必硬塞。", map:"https://www.google.com/maps/search/?api=1&query=浅草寺" },
-        { title:"车上的晚饭", desc:"上野站构内有駅弁屋，新干线闸口内外都能买。北陆新干线上没有餐车，上车前买好。", map:"https://www.google.com/maps/search/?api=1&query=上野駅" }
+        { title:"想睡个懒觉的版本", desc:"浅草寺 + 合羽桥 + 午饭就够半天了，下午回酒店休息到三点再走。昨晚落地已经很晚，第一个整天不必硬塞。", map:"https://www.google.com/maps/search/?api=1&query=浅草寺&query_place_id=ChIJ8T1GpMGOGGARDYGSgpooDWw" },
+        { title:"⚠️ 合羽桥道具街<b>这天去不了</b>", desc:"就在酒店旁边，但整条道具街<b>周六、周日休市</b>（平日 9:00–17:00），9/12 正好是周六。厨具刀具只能记在下次。", map:"https://www.google.com/maps/search/?api=1&query=かっぱ橋道具街&query_place_id=ChIJXYV-6JWOGGAR85vIZbM1RCE" }
       ]
     },
     { n: 3, date: "9/13 · 周日", title: "藤子F的故乡 · 哆啦A梦",
@@ -171,8 +172,8 @@ const TRIP = {
         { time:"09:30", tag:"🚋 交通", cls:"air", title:"哆啦A梦电车 高冈站发", desc:"<b>10:19 到越ノ潟</b>，单程 49 分钟。全天从高冈站只发七班：<b>7:45 / 9:30 / 11:15 / 13:00 / 14:45 / 16:30 / 18:15</b> —— 不是每班电车都是哆啦A梦车。",
           sub:["万葉線可刷 Suica／ICOCA，但<b>周边商品只收现金</b>","周三检修停运，9/13 是周日没问题","官网「とやまロケーションシステム」可看实时车辆位置"],
           map:"https://www.google.com/maps/search/?api=1&query=高岡駅&query_place_id=ChIJwWIICseC918RDLusw6tDfVk" },
-        { time:"10:22", tag:"🚋 交通", cls:"air", title:"同一辆车折返 → 高冈站 11:09", desc:"越ノ潟 10:19 到、10:22 就折返，<b>不用下车换乘</b>。去程回程都坐在哆啦A梦车厢里，整趟 1 小时 39 分。", map:"https://www.google.com/maps/search/?api=1&query=越ノ潟駅" },
-        { time:"11:30", tag:"🍜 美食", cls:"food", title:"午饭", desc:"想吃海鲜可以在中途的中新湊下车，新湊きっときと市場 就在附近，晚一班车回来。不想折腾就回高冈站前吃。", map:"https://www.google.com/maps/search/?api=1&query=新湊きっときと市場" },
+        { time:"10:22", tag:"🚋 交通", cls:"air", title:"同一辆车折返 → 高冈站 11:09", desc:"越ノ潟 10:19 到、10:22 就折返，<b>不用下车换乘</b>。去程回程都坐在哆啦A梦车厢里，整趟 1 小时 39 分。", map:"https://www.google.com/maps/search/?api=1&query=越ノ潟駅&query_place_id=ChIJK3fbLNed918Rp9m1EBbB5C0" },
+        { time:"11:30", tag:"🍜 美食", cls:"food", title:"午饭", desc:"想吃海鲜可以在中途的<b>海王丸站</b>下车，新湊きっときと市場（9:00–17:00）就在旁边，晚一班车回来。不想折腾就回高冈站前吃。", map:"https://www.google.com/maps/search/?api=1&query=新湊きっときと市場&query_place_id=ChIJ4yrNS-id918R_wPnq3LCJHY" },
         { time:"13:00", tag:"🏛 景点", cls:"see", title:"藤子·F·不二雄故乡美术馆", desc:"高冈市美术馆 2F，9:30–17:00，<b>周一闭馆 —— 只能今天去</b>。约 45 分钟，<b>馆内禁止拍摄</b>。原稿、画具、那顶帽子都在。", map:"https://www.google.com/maps/search/?api=1&query=藤子・F・不二雄ふるさとギャラリー&query_place_id=ChIJq6pqv0ud918R6Nx7mq0q_5E" },
         { time:"14:30", tag:"🏛 景点", cls:"see", title:"高冈大佛", desc:"9:00–17:00，日本三大佛之一，从美术馆走过去十几分钟。", map:"https://www.google.com/maps/search/?api=1&query=高岡大仏&query_place_id=ChIJ_dcc5NCD918RL3-PTE1M4No" },
         { time:"15:15", tag:"🏛 景点", cls:"see", title:"山町筋", desc:"土藏造町屋老街，明治大正年间的商家街。", map:"https://www.google.com/maps/search/?api=1&query=山町筋&query_place_id=ChIJ8_PaR7qC918R4UM1XFQPJBA" },
@@ -226,20 +227,20 @@ const TRIP = {
       note: "全程唯一没有备份的一天 —— KE2190 每天只有这一班。好在住金泽站边，只剩「一段巴士」，北铁官方就把这班车标为 KE2190 的接续车。",
       items: [
         { time:"06:45", tag:"🧳 行李", cls:"bag", title:"退房", desc:"前一晚已经收好，今早只需拎包下楼。", map:"https://www.google.com/maps/search/?api=1&query=Smile Hotel Premium Kanazawa Higashiguchi ekimae&query_place_id=ChIJrT1hV2cz-F8R5OhRW33XxKM" },
-        { time:"07:00", tag:"🚶 换乘", cls:"bag", title:"⚠️ 东口 → 西口", desc:"酒店在<b>东口</b>，机场巴士在<b>西口③番のりば</b>。要穿过车站的东西自由通道，拖箱子留 <b>10 分钟</b>。昨天已经走过一遍就不慌。", map:"https://www.google.com/maps/search/?api=1&query=金沢駅西口" },
-        { time:"07:10", tag:"🚌 交通", cls:"air", title:"西口排队", desc:"机场巴士是<b>座席定员制，满员会被直接拒载</b>，别踩点到。票昨天已经买好。", map:"https://www.google.com/maps/search/?api=1&query=金沢駅西口" },
+        { time:"07:00", tag:"🚶 换乘", cls:"bag", title:"⚠️ 东口 → 西口", desc:"酒店在<b>东口</b>，机场巴士在<b>西口③番のりば</b>。要穿过车站的东西自由通道，拖箱子留 <b>10 分钟</b>。昨天已经走过一遍就不慌。", map:"https://www.google.com/maps/search/?api=1&query=金沢駅西口&query_place_id=ChIJL5EkFkIz-F8RVaKhAy6UObU" },
+        { time:"07:10", tag:"🚌 交通", cls:"air", title:"西口排队", desc:"机场巴士是<b>座席定员制，满员会被直接拒载</b>，别踩点到。票昨天已经买好。", map:"https://www.google.com/maps/search/?api=1&query=金沢駅西口&query_place_id=ChIJL5EkFkIz-F8RVaKhAy6UObU" },
         { time:"07:23", tag:"🚌 交通", cls:"air", title:"机场巴士 → 小松机场 07:55", desc:"1,400 日元，约 32 分钟，<b>全程零换乘</b>。北铁 9 月时刻表把这班直接标注为 KE2190 的接续车，官方接续时间 2 小时 20 分。<b>⚠️ 北陆道正在翻修施工，可能晚点</b>，这段余量够吸收。",
           sub:["前一班是西口 6:05 发（6:50 到），太早","后一班 9:23 发（9:55 到），<b>赶不上 10:15 的飞机</b>"],
           map:"https://www.google.com/maps/search/?api=1&query=小松空港&query_place_id=ChIJb2kmYTZR-F8Rb2lWatuVL5Q" },
         { time:"08:15", tag:"✈️ 机场", cls:"air", title:"小松机场值机", desc:"国际线提前 2 小时。机场很小，但<b>国际线只有一条安检通道</b>，别掐点。托运 1 件 23kg、手提 1 件，机型是单通道小机，24 寸箱建议直接托运。", map:"https://www.google.com/maps/search/?api=1&query=小松空港&query_place_id=ChIJb2kmYTZR-F8Rb2lWatuVL5Q" },
-        { time:"10:15", tag:"✈️ 机场", cls:"air", title:"KE2190 小松 → 仁川 T2", desc:"大韩航空，飞行 1 小时 55 分，<b>12:10 落地仁川 T2</b>。<b>注意：9/18 回程是从 T1 出发</b>，两个航站楼之间靠免费穿梭巴士。", map:"https://www.google.com/maps/search/?api=1&query=仁川国際空港第2ターミナル" },
+        { time:"10:15", tag:"✈️ 机场", cls:"air", title:"KE2190 小松 → 仁川 T2", desc:"大韩航空，飞行 1 小时 55 分，<b>12:10 落地仁川 T2</b>。<b>注意：9/18 回程是从 T1 出发</b>，两个航站楼之间靠免费穿梭巴士。", map:"https://www.google.com/maps/search/?api=1&query=仁川国際空港第2ターミナル&query_place_id=ChIJ7TZN-XaQezUR0UAqfjDR5eU" },
         { time:"13:30", tag:"🚄 交通", cls:"air", title:"进首尔 · 钟路", desc:"中国护照排队加取行李，出关约 13:10。T2 的 AREX 直通车到首尔站约 51 分，再换地铁 1 号线两站到钟路 3 街。提前在线填好电子入境卡能省时间。", map:"https://www.google.com/maps/search/?api=1&query=KANSO STAY Seoul&query_place_id=ChIJFUdZTP2jfDURNdEoEH3fvEo" },
         { time:"15:00", tag:"🧳 住宿", cls:"bag", title:"入住 KANSO STAY", desc:"钟路区三一大路 395，钟路大厦 6 楼，<b>24 小时前台</b>。胶囊式，柜子里备好毛巾、拖鞋、耳塞，进房区要脱鞋。住两晚。",
           sub:["位置在<b>钟路 2 街</b>，走到钟路 3 街地铁站几分钟","明早去江陵要从<b>清凉里站</b>出发，地铁 1 号线直达","胶囊通风一般，带副耳塞更稳"],
           map:"https://www.google.com/maps/search/?api=1&query=KANSO STAY Seoul&query_place_id=ChIJFUdZTP2jfDURNdEoEH3fvEo" },
         { time:"16:00", tag:"🛍 购物", cls:"shop", title:"益善洞 · 仁寺洞 · 明洞", desc:"酒店周边就是<b>益善洞韩屋村</b>（韩屋改的咖啡店集群）和仁寺洞；明洞坐地铁两站。今天先摸个底，重货明后天买。",
           sub:["<b>今晚务必把明天去江陵的 KTX 去程票买掉</b>","京江线班次比京釜线稀疏，越早越有座","建议 7 点前后从清凉里发车，江陵才留得出完整一天"],
-          map:"https://www.google.com/maps/search/?api=1&query=익선동 한옥마을 서울" }
+          map:"https://www.google.com/maps/search/?api=1&query=익선동 한옥마을&query_place_id=ChIJe4Jbot2ifDUR2zWhruwyaow" }
       ],
       options: [
         { title:"如果 KE2190 取消或误机", desc:"每天只有这一班，顺延就是 9/18 —— 正好撞上回程。真出事就当场找大韩改签到关西或成田飞仁川，或者直接放弃首尔段从日本回国。<b>提前把这个预案想清楚，别在机场现想。</b>", map:"https://www.google.com/maps/search/?api=1&query=小松空港&query_place_id=ChIJb2kmYTZR-F8Rb2lWatuVL5Q" }
@@ -273,12 +274,12 @@ const TRIP = {
       note: "从<b>仁川 T1</b> 起飞（来的时候是 T2，别跑错）。App 提示提前 3 小时。上午还能用两三个小时，但要拖着行李。",
       items: [
         { time:"09:00", tag:"🍜 美食", cls:"food", title:"早饭 + 最后补货", desc:"钟路和明洞的便利店、药妆店早上就开，漏买的现在补。买完回酒店取箱子。", map:"https://www.google.com/maps/search/?api=1&query=KANSO STAY Seoul&query_place_id=ChIJFUdZTP2jfDURNdEoEH3fvEo" },
-        { time:"11:30", tag:"✈️ 机场", cls:"air", title:"出发去仁川 T1", desc:"钟路 3 街 → 首尔站 → AREX，或直接坐机场巴士。路上 70–80 分钟，<b>目标 12:30 到 T1</b>。免税店提货点也在 T1。", map:"https://www.google.com/maps/search/?api=1&query=仁川国際空港第1ターミナル" },
-        { time:"15:30", tag:"✈️ 机场", cls:"air", title:"仁川 T1 → 青岛胶东", desc:"山航 SC4614，737-800，<b>16:05 到青岛</b>（北京时间），飞行 1 小时 35 分，无餐食。托运 1 件 23kg、手提 1 件 5kg。", map:"https://www.google.com/maps/search/?api=1&query=青岛胶东国际机场" },
+        { time:"11:30", tag:"✈️ 机场", cls:"air", title:"出发去仁川 T1", desc:"钟路 3 街 → 首尔站 → AREX，或直接坐机场巴士。路上 70–80 分钟，<b>目标 12:30 到 T1</b>。免税店提货点也在 T1。", map:"https://www.google.com/maps/search/?api=1&query=仁川国際空港第1ターミナル&query_place_id=ChIJA-F312OaezURGNV_89NW7Ys" },
+        { time:"15:30", tag:"✈️ 机场", cls:"air", title:"仁川 T1 → 青岛胶东", desc:"山航 SC4614，737-800，<b>16:05 到青岛</b>（北京时间），飞行 1 小时 35 分，无餐食。托运 1 件 23kg、手提 1 件 5kg。", map:"https://www.google.com/maps/search/?api=1&query=青岛胶东国际机场&query_place_id=ChIJ8bwuVEXZlTUR8dGZg9vL000" },
         { time:"16:05", tag:"🧳 中转", cls:"bag", title:"青岛中转（2 小时 35 分）", desc:"行李直挂杭州，不用重新托运。但<b>人要走完国际到达的全套流程</b>：边检、海关、再进国内出发安检。",
           sub:["2 小时 35 分够用但不宽裕，<b>下机后别逛，直接走流程</b>","第一段一旦延误超过一小时就盯紧，及时找地服","国内段准点率 90%，App 提示提前 2 小时"],
-          map:"https://www.google.com/maps/search/?api=1&query=青岛胶东国际机场" },
-        { time:"18:40", tag:"✈️ 机场", cls:"air", title:"青岛 → 杭州萧山 T3", desc:"山航 SC4769，737-800，<b>20:25 到杭州</b>，飞行 1 小时 45 分。", map:"https://www.google.com/maps/search/?api=1&query=杭州萧山国际机场T3" }
+          map:"https://www.google.com/maps/search/?api=1&query=青岛胶东国际机场&query_place_id=ChIJ8bwuVEXZlTUR8dGZg9vL000" },
+        { time:"18:40", tag:"✈️ 机场", cls:"air", title:"青岛 → 杭州萧山 T3", desc:"山航 SC4769，737-800，<b>20:25 到杭州</b>，飞行 1 小时 45 分。", map:"https://www.google.com/maps/search/?api=1&query=杭州萧山国际机场&query_place_id=ChIJeZr5cP6TTDQROhcfDB7aCh4" }
       ],
       options: [
         { title:"如果想上午多留一会儿", desc:"钟路到仁川的机场巴士班次很密，最晚 12:00 出发还赶得上（13:20 到 T1，剩 2 小时 10 分）。但那样就没有任何缓冲，早高峰堵一次就危险。" }
