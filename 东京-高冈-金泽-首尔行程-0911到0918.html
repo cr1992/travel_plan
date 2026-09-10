@@ -120,7 +120,7 @@ const TRIP = {
     { ic: "🏨", html: "浅草 RESOL POSHTEL 1 晚 · <b>高冈 SEKAI HOTEL 3 晚</b> · 金泽微笑酒店东口 1 晚 · 首尔 KANSO STAY 2 晚" },
     { ic: "🧳", html: "三段航班行李额一致：<b>托运 1 件 23kg（28 寸）</b>，山航段手提 1 件 5kg。买多了在高冈用邮局 EMS 寄回国" },
     { ic: "💳", html: "城端线·冰见线·万葉線 <b>可刷 Suica／ICOCA</b>。人均备 <b>2 万日元现金</b>，重点是小额零钞" },
-    { ic: "⚠️", tip: true, html: "<b>还差一张票</b>：9/17 去江陵的 KTX 只买了回程（江陵 17:01 → 清凉里 18:49），<b>去程要另外买</b>，京江线班次稀疏" }
+    { ic: "⚠️", tip: true, html: "<b>9/17 进出站不一样</b>：去程落 <b>正东津 08:58</b>，回程从 <b>江陵站 17:01</b> 发车，中间要坐 14 分钟接驳列车过去" }
   ],
   days: [
     { n: 1, date: "9/11 · 周五", title: "只是落脚 · 浅草",
@@ -245,21 +245,28 @@ const TRIP = {
         { title:"如果 KE2190 取消或误机", desc:"每天只有这一班，顺延就是 9/18 —— 正好撞上回程。真出事就当场找大韩改签到关西或成田飞仁川，或者直接放弃首尔段从日本回国。<b>提前把这个预案想清楚，别在机场现想。</b>", map:"https://www.google.com/maps/search/?api=1&query=小松空港&query_place_id=ChIJb2kmYTZR-F8Rb2lWatuVL5Q" }
       ]
     },
-    { n: 7, date: "9/17 · 周四", title: "东海岸 · 江陵一日",
-      note: "回程票已出：<b>KTX-Eum 820，江陵 17:01 → 清凉里 18:49</b>。去程还没买，京江线班次稀疏，务必前一晚订好。从清凉里到江陵约 1 小时 50 分。",
+    { n: 7, date: "9/17 · 周四", title: "东海岸 · 正东津到江陵",
+      note: "两张票都已出，但<b>进出站不一样</b>：去程 KTX-EUM 841 落<b>正东津</b> 08:58（4 车厢 14A），回程从<b>江陵站</b> 17:01 发车。上午正东津，中午坐接驳列车过去，下午江陵。",
       items: [
-        { time:"07:00", tag:"🚄 交通", cls:"air", title:"清凉里站 → 江陵", desc:"地铁 1 号线从钟路 3 街到清凉里约 15 分钟。KTX 京江线约 <b>1 小时 50 分</b>，坐 7 点前后的车约 9 点到江陵。<b>⚠️ 去程票要自己买</b>。", map:"https://www.google.com/maps/search/?api=1&query=Cheongnyangni Station Seoul&query_place_id=ChIJM2j8Blu7fDUR_dkwN-T660Y" },
-        { time:"09:30", tag:"🏛 景点", cls:"see", title:"乌竹轩", desc:"9:00–17:00 天天开。申师任堂和栗谷李珥的故居 —— 就是韩币五万元和五千元上的那对母子。院子里的黑竹是名字的由来，逛一小时左右。", map:"https://www.google.com/maps/search/?api=1&query=Ojukheon Gangneung&query_place_id=ChIJKQ8jYrnlYTURKf8PKysmjgA" },
-        { time:"11:00", tag:"🏛 景点", cls:"see", title:"镜浦海边", desc:"江陵最有名的海滩，沙滩很宽，后面是松林。东海的蓝跟日本海那边完全是两种感觉。", map:"https://www.google.com/maps/search/?api=1&query=경포해변 강릉&query_place_id=ChIJAUtHQ6bmYTURw9bnPeplAtM" },
-        { time:"12:30", tag:"🍜 美食", cls:"food", title:"安木海边咖啡街", desc:"江陵是韩国咖啡文化的发源地，安木这条街整排都是面海的咖啡馆。午饭加一杯咖啡，坐着看海。海边有座巨大的猫雕塑。", map:"https://www.google.com/maps/search/?api=1&query=Anmok Coffee Street Gangneung&query_place_id=ChIJ5ykhZf3mYTUR-O6pV6HXXpQ" },
-        { time:"15:00", tag:"🛍 购物", cls:"shop", title:"江陵中央市场", desc:"8:00–19:00。炸鸡、鱿鱼血肠、可乐饼，还有月花街那家有名的糖饼冰淇淋。离江陵站近，逛完直接去车站。", map:"https://www.google.com/maps/search/?api=1&query=Gangneung Jungang Market&query_place_id=ChIJ5-y4g_vlYTURGd4LueRcB1E" },
-        { time:"16:40", tag:"🚄 交通", cls:"air", title:"江陵站候车", desc:"站内有咖啡店和便利店。<b>提前 20 分钟到</b>，江陵站不大但月台要找一下。", map:"https://www.google.com/maps/search/?api=1&query=Gangneung Station&query_place_id=ChIJCU8-feDlYTURvvvzic33lAk" },
-        { time:"17:01", tag:"🚄 交通", cls:"air", title:"KTX-Eum 820 → 清凉里 18:49", desc:"1 小时 48 分，直达，经济座，已出票。到清凉里换地铁 1 号线回钟路，约 15 分钟。", map:"https://www.google.com/maps/search/?api=1&query=Cheongnyangni Station Seoul&query_place_id=ChIJM2j8Blu7fDUR_dkwN-T660Y" },
-        { time:"19:30", tag:"🧳 行李", cls:"bag", title:"回钟路 · 晚饭 · 算行李", desc:"日本买的加韩国买的，<b>回程只有 1 件 23kg 托运额</b>。今晚称一下，超了明天一早在酒店附近的邮局寄一箱回国。", map:"https://www.google.com/maps/search/?api=1&query=KANSO STAY Seoul&query_place_id=ChIJFUdZTP2jfDURNdEoEH3fvEo" }
+        { time:"06:30", tag:"🚄 交通", cls:"air", title:"钟路 → 清凉里站", desc:"地铁 1 号线从钟路 3 街到清凉里约 15 分钟。<b>07:05 发车</b>，六点半出门有余量。KORAIL 的电子票<b>不能用截图</b>，要在 App 里打开原件。", map:"https://www.google.com/maps/search/?api=1&query=Cheongnyangni Station Seoul&query_place_id=ChIJM2j8Blu7fDUR_dkwN-T660Y" },
+        { time:"07:05", tag:"🚄 交通", cls:"air", title:"KTX-EUM 841 → 正东津 08:58", desc:"1 小时 53 分，4 车厢 14A，经济座正向。乘车口信息发车前 15 分钟才公布，早点到站看屏幕。", map:"https://www.google.com/maps/search/?api=1&query=Jeongdongjin Station&query_place_id=ChIJ5Qz7xyvDYTURHKJzjE7I_ps" },
+        { time:"09:00", tag:"🏛 景点", cls:"see", title:"正东津站 · 世界离海最近的车站", desc:"吉尼斯纪录在册，月台直接对着东海，站内有面海的座位可以坐着吹风。下车先在月台拍。", map:"https://www.google.com/maps/search/?api=1&query=Jeongdongjin Station&query_place_id=ChIJ5Qz7xyvDYTURHKJzjE7I_ps" },
+        { time:"09:25", tag:"🏛 景点", cls:"see", title:"沙漏公园 · 正东津海边", desc:"24 小时开放、免费。世界最大的千年沙漏，每年 12 月 31 日午夜翻转一次。沙滩很干净，走一圈很舒服。", map:"https://www.google.com/maps/search/?api=1&query=Hourglass Park Jeongdongjin&query_place_id=ChIJH67aXS7DYTURxzsawRACDMg" },
+        { time:"10:15", tag:"🏛 景点", cls:"see", title:"正东津时间博物馆", desc:"9:00–18:00 天天开，就在沙漏公园里。<b>整座馆是八节火车车厢串起来的</b>，里面是世界各地的钟表收藏，尽头的观景台正对海。说明有英文，长段用翻译软件拍一下就行。", map:"https://www.google.com/maps/search/?api=1&query=정동진 시간박물관&query_place_id=ChIJ3T6rZy7DYTUR2umqrLHuZYc" },
+        { time:"11:20", tag:"🏛 景点", cls:"see", title:"远眺太阳游轮", desc:"悬崖顶上那艘巨轮是酒店，主楼原则上只对住客开放，但从沙滩和公园远看才是标志性画面 —— 一艘船停在山上。", map:"https://www.google.com/maps/search/?api=1&query=Sun Cruise Hotel Jeongdongjin&query_place_id=ChIJl04CBTDDYTURS_Ug_CPZhi8" },
+        { time:"12:00", tag:"🍜 美食", cls:"food", title:"站前垫一口", desc:"正东津站前有小吃和便利店。正餐留到江陵的中央市场吃，这里买点车上的就行。", map:"https://www.google.com/maps/search/?api=1&query=Jeongdongjin Station&query_place_id=ChIJ5Qz7xyvDYTURHKJzjE7I_ps" },
+        { time:"12:33", tag:"🚄 交通", cls:"air", title:"接驳列车 正东津 → 江陵 12:47", desc:"东海～江陵接驳列车，<b>只要 14 分钟</b>。正东津经停时刻：07:06 / 08:22 / 09:59 / <b>12:33</b> / 15:27 / 17:54。",
+          sub:["⚠️ <b>错过 12:33 要等到 15:27</b>，江陵的下午就没了","备选：KTX 也停正东津（到江陵约 20 分钟），或直接打车约 20 分钟","接驳列车便宜，现场买票即可"],
+          map:"https://www.google.com/maps/search/?api=1&query=Gangneung Station&query_place_id=ChIJCU8-feDlYTURvvvzic33lAk" },
+        { time:"13:00", tag:"🍜 美食", cls:"food", title:"江陵中央市场", desc:"8:00–19:00，离江陵站很近。炸鸡、鱿鱼血肠、可乐饼，月花街那家糖饼冰淇淋很有名。午饭加逛街一起解决。", map:"https://www.google.com/maps/search/?api=1&query=Gangneung Jungang Market&query_place_id=ChIJ5-y4g_vlYTURGd4LueRcB1E" },
+        { time:"14:40", tag:"🍜 美食", cls:"food", title:"安木海边咖啡街", desc:"江陵是韩国咖啡文化的发源地，安木这条街整排都是面海的咖啡馆。海边有座巨大的猫雕塑。坐着喝一杯，这天的收尾。", map:"https://www.google.com/maps/search/?api=1&query=Anmok Coffee Street Gangneung&query_place_id=ChIJ5ykhZf3mYTUR-O6pV6HXXpQ" },
+        { time:"16:20", tag:"🚄 交通", cls:"air", title:"回江陵站候车", desc:"安木回江陵站坐公交约 20 分钟。<b>提前 20 分钟到站</b>。", map:"https://www.google.com/maps/search/?api=1&query=Gangneung Station&query_place_id=ChIJCU8-feDlYTURvvvzic33lAk" },
+        { time:"17:01", tag:"🚄 交通", cls:"air", title:"KTX-Eum 820 → 清凉里 18:49", desc:"1 小时 48 分，直达，经济座，已出票。到清凉里换地铁 1 号线回钟路约 15 分钟。", map:"https://www.google.com/maps/search/?api=1&query=Cheongnyangni Station Seoul&query_place_id=ChIJM2j8Blu7fDUR_dkwN-T660Y" },
+        { time:"19:30", tag:"🧳 行李", cls:"bag", title:"回钟路 · 晚饭 · 算行李", desc:"日本买的加韩国买的，<b>回程只有 1 件 23kg 托运额</b>。今晚称一下，超了明早在附近邮局寄一箱回国。", map:"https://www.google.com/maps/search/?api=1&query=KANSO STAY Seoul&query_place_id=ChIJFUdZTP2jfDURNdEoEH3fvEo" }
       ],
       options: [
-        { title:"想去 BTS 那个公交站：<b>注文津防波堤</b>", desc:"专辑封面那个海边公交站在注文津，江陵站往北约 20 公里，坐巴士约 40 分钟。24 小时开放，防波堤本身很好走。但来回要两个多小时，去了就得砍掉乌竹轩或中央市场。", map:"https://www.google.com/maps/search/?api=1&query=Jumunjin Seawall&query_place_id=ChIJzeEMHdHjYTURZHi94tiTYgQ" },
-        { title:"不想跑远的版本：留在首尔", desc:"江陵单程近两小时，来回四小时。如果只是想休息，那就留在钟路：益善洞、北村、三清洞、景福宫（周二闭，今天周四开）全在走路和两站地铁范围内。但回程 KTX 票已出，退票要收手续费。", map:"https://www.google.com/maps/search/?api=1&query=景福宮 ソウル" }
+        { title:"想在正东津多待：坐 <b>15:27</b> 那班", desc:"正东津还有海边轨道自行车、海边石阶栈道可以走。但 15:42 才到江陵，离 17:01 发车只剩一小时多，等于江陵只够在站边吃碗面。要不要这么换，看她更想要海还是想要咖啡街。", map:"https://www.google.com/maps/search/?api=1&query=Jeongdongjin Beach&query_place_id=ChIJtQIZhmPvYTURZS-7GmiWvBc" },
+        { title:"江陵下午换成文化线", desc:"12:47 到站后改去<b>乌竹轩</b>（9:00–17:00，韩币五万元和五千元上那对母子的故居）＋<b>镜浦海边</b>，都在江陵站北边，要坐公交。代价是放弃中央市场和咖啡街。", map:"https://www.google.com/maps/search/?api=1&query=Ojukheon Gangneung&query_place_id=ChIJKQ8jYrnlYTURKf8PKysmjgA" }
       ]
     },
     { n: 8, date: "9/18 · 周五", title: "青岛转机 · 回杭州",
@@ -279,7 +286,7 @@ const TRIP = {
     }
   ],
   checklist: [
-    "<b>买 9/17 去江陵的 KTX 去程票</b> —— 目前只有回程（江陵 17:01 → 清凉里 18:49），京江线班次稀疏",
+    "<b>9/17 记牢接驳班次</b>：正东津发车 09:59 / <b>12:33</b> / 15:27，错过 12:33 要等到 15:27，江陵下午就没了",
     "9/15 到金泽后<b>先去西口③番のりば买次日机场巴士票</b>，并走一遍东西自由通道",
     "确认金泽酒店能否 <b>6:45 前退房</b>；SEKAI HOTEL 最晚入住 22:00（9/12 到 19:21，来得及）",
     "金泽 21 世纪美术馆的《泳池》要单独在官网约时段",
@@ -290,7 +297,7 @@ const TRIP = {
     "9 月中旬是台风高峰，建议买含航班取消和延误的保险"
   ],
   footerH: "白虾、铜器、兼六园，和一枚盖着哆啦A梦戳的明信片 ✉️",
-  footerNote: "本页已按去哪儿订单逐条核对：航班号、车次、酒店地址与入住日期均取自票据。班次按官方时刻表核对到 2026 年 9 月（万葉線 8/1 版、北铁机场巴士 9 月版、JR 西日本 9 月号、京成现行版）。仍需自行确认：9/17 江陵去程 KTX、9/14 雨晴回程时刻。营业时间以出行当天为准。"
+  footerNote: "本页已按去哪儿订单逐条核对：航班号、车次、酒店地址与入住日期均取自票据。班次按官方时刻表核对到 2026 年 9 月（万葉線 8/1 版、北铁机场巴士 9 月版、JR 西日本 9 月号、京成现行版）。仍需自行确认：9/14 雨晴回程时刻。营业时间以出行当天为准。"
 };
 
 /* ---------------- renderer (no need to edit below) ---------------- */
